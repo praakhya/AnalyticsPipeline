@@ -1,0 +1,23 @@
+<div class="page">
+    <button class="back" mat-flat-button color="primary" (click)="navigateTo('')">Back home</button>
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>
+                <h1>Signup</h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Email-ID</mat-label>
+                <input matInput type="email-id" color="primary"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" color="primary"/>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="primary" (click)="navigateTo('login')">Signup</button>
+        </mat-card-actions>
+    </mat-card>
+    </div>

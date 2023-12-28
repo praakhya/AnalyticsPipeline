@@ -1,0 +1,21 @@
+.grid {
+    display:flex; 
+    flex-direction:row; 
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.card {
+    width: fit-content;
+    height: fit-content;
+    max-width: 30vw;
+    max-height: 30vw;
+    overflow: hidden;
+}
+.content {
+    padding: 1em;
+}
