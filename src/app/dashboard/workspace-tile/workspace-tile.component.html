@@ -1,0 +1,40 @@
+@if(this.viewStyle=="list") {
+<mat-list-item>
+    @if (this.workspace.cover != "") {
+    <img matListItemAvatar src={{this.workspace.cover}} />
+    }
+    <span matListItemTitle>{{this.workspace.name}}</span>
+    <span>
+        ID | {{this.workspace.id}}
+    </span>
+</mat-list-item>
+}
+@else if (viewStyle==='grid') {
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>
+            <h1>{{this.workspace.name}}</h1>
+        </mat-card-title>
+        <mat-card-subtitle>
+            ID | {{this.workspace.id}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    @if (this.workspace.cover != "") {
+    <img matListItemAvatar src={{this.workspace.cover}} />
+    }
+</mat-card>
+}
+@else if (viewStyle==='agenda') {
+<mat-card class="row-card">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{this.workspace.name}}</mat-card-title>
+            <mat-card-subtitle>ID | {{this.workspace.id}}</mat-card-subtitle>
+            
+        </mat-card-title-group>
+    </mat-card-header>
+    @if (this.workspace.cover != "") {
+        <img matListItemAvatar src={{this.workspace.cover}} />
+    }
+</mat-card>
+}

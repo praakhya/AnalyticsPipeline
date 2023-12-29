@@ -1,0 +1,24 @@
+@if(this.viewStyle=="list") {
+<mat-list>
+    @for(ws of this.workspaces; track ws) {
+    <app-workspace-tile [workspace]="ws" [viewStyle]="'list'"></app-workspace-tile>
+    }
+</mat-list>
+}
+@else if (viewStyle==='grid') {
+<div class="grid">
+    @for (ws of workspaces; track ws) {
+        <app-workspace-tile [workspace]="ws" [viewStyle]="'grid'"></app-workspace-tile>
+
+    }
+</div>
+
+}
+@else if (viewStyle==='agenda') {
+<div class="row-list">
+    @for (ws of workspaces; track ws) {
+        <app-workspace-tile [workspace]="ws" [viewStyle]="'agenda'"></app-workspace-tile>
+
+    }
+</div>
+}

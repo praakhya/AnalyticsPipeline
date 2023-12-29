@@ -12,7 +12,7 @@ import { User } from '../models/user';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
-
+import { WorkspaceListComponent } from './workspace-list/workspace-list.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -26,16 +26,18 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatListModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    WorkspaceListComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   viewStyle: string = "list";
-  collection: string = "recent";
+  collection: string = "Recent Workspaces";
   workspaces:Array<Workspace> = [];
   user!:User
+  recentRange:number = 5;
   constructor(private authService: AuthService, private dataService:DataService) {}
   ngOnInit() {
     this.user = this.authService.getUser("xijaw67542@vasteron.com")
