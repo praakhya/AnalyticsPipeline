@@ -4,11 +4,12 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkspaceComponent } from './workspace/workspace.component';
+import { TestingComponent } from './testing/testing.component';
 
 export const routes: Routes = [
     {path:"", component:HomeComponent},
     {path:"login", component:LoginComponent},
     {path:"signup",component:SignupComponent},
     {path:"dashboard", component:DashboardComponent},
-    {path:"testing", component:WorkspaceComponent}
+    {path:"testing", component:TestingComponent}
 ];
