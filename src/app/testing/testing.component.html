@@ -1,6 +1,7 @@
 <h2>Bar Chart</h2>
-<figure id="frame">
-    Some text
-</figure>
-<button (click)="do()">Click</button>
-
+<p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+<p-chart type="pie" [data]="basicData" [options]="basicOptions"></p-chart>
+<p-chart type="doughnut" [data]="basicData" [options]="basicOptions"></p-chart>
+<p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+<p-chart type="polarArea" [data]="basicData" [options]="basicOptions"></p-chart>
+<p-chart type="radar" [data]="basicData" [options]="basicOptions"></p-chart>

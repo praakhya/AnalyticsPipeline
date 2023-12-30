@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
-import * as d3 from 'd3';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 // https://blog.logrocket.com/data-visualization-angular-d3-js/
 // https://d3js.org/d3-chord/chord
 @Component({
   selector: 'app-workspace',
   standalone: true,
-  imports: [],
+  imports: [
+    MatToolbarModule,
+    MatTabsModule,
+    MatIconModule,
+    MatButtonModule
+  ],
   templateUrl: './workspace.component.html',
   styleUrl: './workspace.component.scss'
 })
