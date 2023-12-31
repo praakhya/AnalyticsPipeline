@@ -3,6 +3,9 @@
     @if (this.workspace.cover != "") {
     <img matListItemAvatar src={{this.workspace.cover}} />
     }
+    @else {
+        <div matListItemAvatar></div>
+    }
     <span matListItemTitle>{{this.workspace.name}}</span>
     <span>
         ID | {{this.workspace.id}}
@@ -13,7 +16,7 @@
 <mat-card class="card">
     <mat-card-header>
         <mat-card-title>
-            <h1>{{this.workspace.name}}</h1>
+            <h3>{{this.workspace.name}}</h3>
         </mat-card-title>
         <mat-card-subtitle>
             ID | {{this.workspace.id}}
