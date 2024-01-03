@@ -1,14 +1,27 @@
 .button-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1em;
-    width: 80vw;
-    height: max-content;
+    width: max-content;
+    height: 80vh;
     background-color: white;
     position: fixed;
-    bottom: 1em;
-    left: 10vw;
+    top: 10vh;
+    left: 0.5em;
     align-self: center;
+    border-radius: 3em;
+    padding: 0.5em;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.dataset-options {
+    width: 2.5em;
+    height: 2.5em;;
+}
+.datasets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    gap: 1em;
 
 }

@@ -1,5 +1,9 @@
 <h2 mat-dialog-title>Upload a Dataset</h2>
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-typography dialog-content">
+    <mat-form-field>
+        <mat-label>Dataset Name</mat-label>
+        <input matInput type="text" [(ngModel)]="name" [value]="name" (change)="valuechange($event)"/>
+    </mat-form-field>
     <input type="file" class="upload" (change)="changeListener($event)">
 </mat-dialog-content>
 <mat-dialog-actions align="end">

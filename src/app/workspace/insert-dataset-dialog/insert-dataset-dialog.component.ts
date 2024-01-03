@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { csv } from 'd3';
+import { EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-insert-dataset-dialog',
   standalone: true,
@@ -11,27 +13,35 @@ import { csv } from 'd3';
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule
   ],
   templateUrl: './insert-dataset-dialog.component.html',
   styleUrl: './insert-dataset-dialog.component.scss'
 })
 export class InsertDatasetDialogComponent {
-  datasets:any[] = []
+  @Output() datasets = new EventEmitter<any>();
+  header:any[] = []
   uploadedDataset:any = null
+  name : string = '';
+
+  valuechange(event:any) {
+    console.log(this.name);
+  }
   parseCSV(csvText:string) {
     var table:any[] = []
     table = csvText.split("\n")
-    var header:any[] = []
-    for (var word of csvText.split(",")) {
-      header.push(word)
+    console.log("table: ",table)
+    for (var word of table[0].split(",")) {
+      if (word)
+        this.header.push(word)
     }
     var objectList:any[] = []
     for (var i=1; i<table.length; ++i) {
       var row:any[] = table[i].split(",")
       var obj:any = {}
-      for (var j=0; j<header.length; ++j) {
-        obj[header[j]]= row[j]
+      for (var j=0; j<this.header.length; ++j) {
+        obj[this.header[j]]= row[j]
       }
       objectList.push(obj)
       }
@@ -56,7 +66,8 @@ export class InsertDatasetDialogComponent {
 
   }
   uploadDataset() {
-    this.datasets.push(this.uploadedDataset)
-    this.uploadedDataset=null
+    this.datasets.emit([this.name,this.header,this.uploadedDataset])
+    this.uploadedDataset=null;
+    this.header=[];
   }
 }
