@@ -4,8 +4,9 @@ import {
   NoopAnimationsModule,
   provideAnimations,
   provideNoopAnimations
-} from "./chunk-TAXM53VW.js";
-import "./chunk-RM3DG3AH.js";
+} from "./chunk-VDXWYRVO.js";
+import "./chunk-QHZB3J5C.js";
+import "./chunk-QEJT3YM4.js";
 import "./chunk-LFYF74II.js";
 import {
   ANIMATION_MODULE_TYPE

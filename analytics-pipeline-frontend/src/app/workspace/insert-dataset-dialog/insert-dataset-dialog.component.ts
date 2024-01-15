@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-insert-dataset-dialog',
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './insert-dataset-dialog.component.html',
   styleUrl: './insert-dataset-dialog.component.scss'
@@ -24,7 +25,7 @@ export class InsertDatasetDialogComponent {
   header:any[] = []
   uploadedDataset:any = null
   name : string = '';
-
+  constructor(private dataService: DataService) {}
   valuechange(event:any) {
     console.log(this.name);
   }
@@ -67,7 +68,11 @@ export class InsertDatasetDialogComponent {
   }
   uploadDataset() {
     this.datasets.emit([this.name,this.header,this.uploadedDataset])
+    this.dataService.postData(this.name,this.uploadedDataset).subscribe(data=>{
+      console.log(data)
+    })
     this.uploadedDataset=null;
     this.header=[];
   }
+  
 }

@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      user: test
+      uri: mongodb://localhost:27017/analytics_pipeline
