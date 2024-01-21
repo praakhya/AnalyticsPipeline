@@ -6,7 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Data } from '../../models/data';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-insert-dataset-dialog',
   standalone: true,
@@ -25,7 +27,7 @@ export class InsertDatasetDialogComponent {
   header:any[] = []
   uploadedDataset:any = null
   name : string = '';
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private http: HttpClient) {}
   valuechange(event:any) {
     console.log(this.name);
   }
@@ -68,11 +70,22 @@ export class InsertDatasetDialogComponent {
   }
   uploadDataset() {
     this.datasets.emit([this.name,this.header,this.uploadedDataset])
-    this.dataService.postData(this.name,this.uploadedDataset).subscribe(data=>{
+    this.postData(this.name,this.uploadedDataset).subscribe(data=>{
       console.log(data)
     })
     this.uploadedDataset=null;
     this.header=[];
+  }
+  postData(title:string, data:any): Observable<Data>{
+    const sendingData = {
+      "title":title,
+      "data":data
+    } 
+    var sendHeaders:HttpHeaders = new HttpHeaders()
+    sendHeaders.set("Content-Type", "application/json")
+    return this.http.post<Data>('/api/data', sendingData,{
+      headers: sendHeaders
+    })
   }
   
 }

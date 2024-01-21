@@ -4,10 +4,13 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("data")
+import java.util.Map;
+
+@Document("database")
 @Data
-public class DataEntity {
+public class DatabaseEntity {
+  @Id
   private String id;
-  private String title;
-  private String data;
+  private Map<String, String> databaseSpecification;
+
 }

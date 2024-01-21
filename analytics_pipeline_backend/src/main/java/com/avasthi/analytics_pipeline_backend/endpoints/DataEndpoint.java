@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -18,6 +19,11 @@ public class DataEndpoint {
   @RequestMapping(value = "/data", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public List<DataEntity> findAllData() {
     return dataRepository.findAll();
+  }
+
+  @RequestMapping(value = "/data/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public Optional<DataEntity> findDataById(@PathVariable("id") String id) {
+    return dataRepository.findById(id);
   }
 
   @RequestMapping(value = "/data", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

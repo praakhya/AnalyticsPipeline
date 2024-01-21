@@ -1,13 +1,14 @@
 package com.avasthi.analytics_pipeline_backend.entities;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("data")
+import java.util.Map;
+
+@Document("databaseSchema")
 @Data
-public class DataEntity {
+public class DatabaseSchemaEntity {
   private String id;
-  private String title;
-  private String data;
+  private Map<String, String> databaseSchemaSpecification;
+
 }

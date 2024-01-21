@@ -89,22 +89,10 @@ export class DataService {
         ]
     }
 ]
-  constructor(private http: HttpClient) { }
   getWorkspaces(email:string) {
     var list = this.fakeListOfWorkspaces.filter(obj=>obj.email===email).map(obj=>obj.workspaces)
     var final_list = list[0]
     console.log("list:",list)
     return final_list.map((obj:any)=>obj as Workspace)
-  }
-  postData(title:string, data:any): Observable<Data>{
-    const sendingData = {
-      "title":title,
-      "data":data
-    } 
-    var sendHeaders:HttpHeaders = new HttpHeaders()
-    sendHeaders.set("Content-Type", "application/json")
-    return this.http.post<Data>('/api/data', sendingData,{
-      headers: sendHeaders
-    })
   }
 }
