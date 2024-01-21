@@ -1,0 +1,86 @@
+@import "../vars.scss";
+
+.introduction {
+    box-shadow: rgb(38, 57, 77) 0px 20px 10px -20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1vh;
+    /* background-image: linear-gradient(180deg, white, $light-blue, hsl(
+        hue($light-blue),
+        saturation($light-blue),
+        lightness($light-blue)-5%
+    )); */
+    height: 100%;
+    width: 100%;
+}
+
+.description {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    li {
+        font-size: 5vw;
+        font-weight: 300;
+        color: hsl(
+            hue($light-blue),
+            saturation($light-blue),
+            20%
+        );
+        font-style: italic;
+        letter-spacing: 0.1em;
+    }
+    ul {
+        margin: 10%;
+    }
+
+    li::marker {
+        content: "~ ";
+        font-size: 3vw;
+        font-weight: bold;
+        color: hsl(hue($light-blue), 100%, 40%);
+        letter-spacing: 0.001em;
+    }
+
+    .title {
+        font-weight: 500;
+        color: hsl(
+                        hue($light-blue),
+                        saturation($light-blue),
+                        40%
+                    );
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 8vw;
+        text-align: center;
+        letter-spacing: 0.01vw;
+        align-self: center;
+    }
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    .title {
+        color: hsl(hue($light-blue),
+                saturation($light-blue),
+                lightness($light-blue)-60%);
+        font-size: 8vw;
+        font-weight: 100;
+    }
+    .btn {
+        padding-left: 5vw;
+        padding-right: 5vw;
+        font-size: 6vw;
+        padding-left: 12vw;
+        padding-right: 12vw;
+        margin: 1vw;
+        color: hsl(
+                hue($light-blue),
+                saturation($light-blue),
+                30%
+            );
+    }
+}

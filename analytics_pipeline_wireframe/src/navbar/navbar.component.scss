@@ -1,0 +1,10 @@
+@import "../vars.scss";
+#navbar-title {
+    color: $amber;
+    text-shadow: 0px 2px hsl(
+        hue($light-blue),
+        saturation($light-blue),
+        lightness($light-blue)-55%);
+    font-weight: 200;
+    font-size: 2em;
+}
