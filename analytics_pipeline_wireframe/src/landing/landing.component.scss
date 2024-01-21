@@ -1,10 +1,12 @@
 @import "../vars.scss";
-
+a {
+    text-decoration: none;
+}
 .introduction {
     box-shadow: rgb(38, 57, 77) 0px 20px 10px -20px;
     display: flex;
     flex-direction: column;
-    gap: 0.1vh;
+    gap: 1em;
     /* background-image: linear-gradient(180deg, white, $light-blue, hsl(
         hue($light-blue),
         saturation($light-blue),
@@ -12,48 +14,40 @@
     )); */
     height: 100%;
     width: 100%;
+    align-items: center;
+    background-image: linear-gradient(180deg, hsl(hue($light-blue), saturation($light-blue), 50%) 30%, white);
 }
 
 .description {
-    align-self: center;
+    align-items: center;
+    justify-content: center;
     display: flex;
     flex-direction: column;
     height: 50%;
+    width: 80%;
+    .title {
+        font-weight: 600;
+        color: white;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: calc(3vw + 3vh);
+        text-align: center;
+        letter-spacing: 0.01em;
+        align-self: center;
+    }
     li {
-        font-size: 5vw;
+        font-size: calc(1.5vw + 1.5vh);;
         font-weight: 300;
-        color: hsl(
-            hue($light-blue),
-            saturation($light-blue),
-            20%
-        );
+        color: hsl(hue($amber), 100%, 90%);
         font-style: italic;
         letter-spacing: 0.1em;
-    }
-    ul {
-        margin: 10%;
     }
 
     li::marker {
         content: "~ ";
-        font-size: 3vw;
+        font-size: 1em;
         font-weight: bold;
-        color: hsl(hue($light-blue), 100%, 40%);
-        letter-spacing: 0.001em;
-    }
-
-    .title {
-        font-weight: 500;
-        color: hsl(
-                        hue($light-blue),
-                        saturation($light-blue),
-                        40%
-                    );
-        font-family: 'Titillium Web', sans-serif;
-        font-size: 8vw;
-        text-align: center;
-        letter-spacing: 0.01vw;
-        align-self: center;
+        color: hsl(hue($amber), 100%, 80%);
+        letter-spacing: 0.1em;
     }
 }
 
@@ -61,22 +55,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 50%;
     .title {
         color: hsl(hue($light-blue),
                 saturation($light-blue),
                 lightness($light-blue)-60%);
-        font-size: 8vw;
+        font-size: calc(3vw + 3vh);;
         font-weight: 100;
     }
+    span {
+        font-size: calc(1vw + 1vh);
+    }
     .btn {
-        padding-left: 5vw;
-        padding-right: 5vw;
-        font-size: 6vw;
-        padding-left: 12vw;
-        padding-right: 12vw;
-        margin: 1vw;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-size: calc(2vw + 2vh);;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin: 1em;
         color: hsl(
                 hue($light-blue),
                 saturation($light-blue),
