@@ -2,20 +2,90 @@
 a {
     text-decoration: none;
 }
-.introduction {
-    box-shadow: rgb(38, 57, 77) 0px 20px 10px -20px;
+.page {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 5em;
+    width: 100vw;
+    height: fit-content;
+    overflow: hidden;
+}
+.paragraph {
+    height: fit-content;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    font-family: $raleway;
+    h1 {
+        color: hsl(hue($light-blue),
+                saturation($light-blue),
+                lightness($light-blue)-70%);
+    }
+    p {
+        font-size: 1.2em;
+        color: hsl(hue($light-blue),
+                saturation($light-blue),
+                lightness($light-blue)-80%);
+    }
+    .dbIconDiv {
+        align-self: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+}
+.dbIcons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1em;
+    margin: 5%;
+    justify-content: space-evenly;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        gap: 1em;
+        div {
+            width: 5em;
+            height: 5em;
+            border-radius: 100%;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 4px 5px 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1em;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+.introduction {
+    background-image: linear-gradient(180deg, 
+        hsl(hue($light-blue), saturation($light-blue), 50%) 50%, 
+        hsl(hue($light-blue), saturation($light-blue), 60%),
+        hsl(hue($light-blue), saturation($light-blue), 80%));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1em;
+    padding: 2em;
     /* background-image: linear-gradient(180deg, white, $light-blue, hsl(
         hue($light-blue),
         saturation($light-blue),
         lightness($light-blue)-5%
     )); */
-    height: 100%;
-    width: 100%;
+    height: fit-content;
+    width: 100vw;
     align-items: center;
-    background-image: linear-gradient(180deg, hsl(hue($light-blue), saturation($light-blue), 50%) 30%, white);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .description {
@@ -23,8 +93,7 @@ a {
     justify-content: center;
     display: flex;
     flex-direction: column;
-    height: 50%;
-    width: 80%;
+    margin: 2em;
     .title {
         font-weight: 600;
         color: white;
@@ -57,20 +126,21 @@ a {
     align-items: center;
     justify-content: flex-start;
     height: 50%;
+    padding: 2em;
     .title {
         color: hsl(hue($light-blue),
                 saturation($light-blue),
                 lightness($light-blue)-60%);
-        font-size: calc(3vw + 3vh);;
+        font-size: calc(2vw + 2vh);;
         font-weight: 100;
     }
-    span {
+    span, a {
         font-size: calc(1vw + 1vh);
     }
     .btn {
         padding-left: 1em;
         padding-right: 1em;
-        font-size: calc(2vw + 2vh);;
+        font-size: calc(1vw + 1vh);;
         padding-left: 2em;
         padding-right: 2em;
         padding-top: 1em;
@@ -81,5 +151,10 @@ a {
                 saturation($light-blue),
                 30%
             );
+    }
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 }
