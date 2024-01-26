@@ -1,4 +1,22 @@
-<div class="page">
-    <h1>Welcome {{username}}</h1>
-    <p></p>
+<div class="dashboard-page">
+    <div class="header">
+        <h1>Welcome {{this.user.username}}</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-button-toggle-group [(ngModel)]="group_value" class="btn-grp">
+        <mat-button-toggle value="list">
+          <mat-icon>lists</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="grid">
+            <mat-icon>grid_view</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        @if (group_value=="list") {
+            <app-workspace-list [workspaceList] = this.workspaces></app-workspace-list>
+
+        }
+        @else if (group_value=="grid") {
+            <app-workspace-grid [workspaceList] = this.workspaces></app-workspace-grid>
+
+        }
 </div>

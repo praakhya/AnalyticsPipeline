@@ -1,0 +1,15 @@
+
+<div class="items">
+    @for (ws of workspaceList; track ws) {
+        <mat-card class="item">
+            <mat-card-header>
+              <mat-card-title>{{ws.title}}</mat-card-title>
+            </mat-card-header>
+            @if (ws.cover) {
+                <img mat-card-image src={{ws.cover}}/>
+            }
+        </mat-card>
+          
+    }
+    
+</div>

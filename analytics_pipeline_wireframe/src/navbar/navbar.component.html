@@ -1,3 +1,7 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" id="navbar">
     <a id="navbar-title" href="">Analytics Pipeline</a>
+    @if (isLoggedIn()) {
+        <button mat-stroked-button (click)="logout()">Logout</button>
+    }
+    
 </mat-toolbar>

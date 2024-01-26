@@ -12,18 +12,28 @@
             </ul>
         </div>
         <mat-card class="login">
-            <span class="title">
-                Try it out here!
-            </span>
-            <a mat-stroked-button color="primary" class="btn" href="signup">
-                Sign up
-            </a>
-            <div>
-                <span class="link">
-                    Returning User?
+            @if (!isLoggedIn()) {
+                <span class="title">
+                    Try it out here!
                 </span>
-                <a href="login" mat-button color="primary">Login</a>
-            </div>
+                <a mat-stroked-button color="primary" class="btn" href="signup">
+                    Sign up
+                </a>
+                <div>
+                    <span class="link">
+                        Returning User?
+                    </span>
+                    <a href="login" mat-button color="primary">Login</a>
+                </div>
+            }
+            @else {
+                <div>
+                    <a href="dashboard" mat-button class="title">
+                        Go to Dashboard
+                    </a>
+                </div>
+
+            }
 
         </mat-card>
     </div>
