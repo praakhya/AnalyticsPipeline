@@ -9,6 +9,9 @@ import java.util.UUID;
 @Document("workspace")
 @Data
 public class WorkspaceEntity {
+  public WorkspaceEntity() {
+    this.id = UUID.randomUUID();
+  }
   @Id
   private UUID id;
   private String name;

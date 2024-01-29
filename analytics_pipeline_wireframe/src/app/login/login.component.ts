@@ -8,6 +8,8 @@ import { AuthService } from '../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { User } from '../model/user';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -17,7 +19,8 @@ import { Router } from '@angular/router';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -25,12 +28,15 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string = "";
   password: string = "";
-  constructor(private authService: AuthService, private router:Router) {}
+  constructor(private authService: AuthService, private router:Router, private http:HttpClient) {}
   onSubmit() {
     //login
     var user:User = new User(this.username);
     this.authService.initUser(user);
     this.router.navigate(["dashboard"])
+  }
+  authUser(user: User) {
+    
   }
 
 }

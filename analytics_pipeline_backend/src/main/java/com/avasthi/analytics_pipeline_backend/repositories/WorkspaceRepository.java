@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public interface WorkspaceRepository extends MongoRepository<WorkspaceEntity, String> {
-
+public interface WorkspaceRepository extends MongoRepository<WorkspaceEntity, UUID> {
+  @Query("{$or:[{'ownerID':?0},{'partnerIDs':?0}]}")
+  List<WorkspaceEntity> findAllWorkspacesFromUserID(UUID id);
 }

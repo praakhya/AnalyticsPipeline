@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
-public interface UserRepository extends MongoRepository<UserEntity, String> {
+public interface UserRepository extends MongoRepository<UserEntity, UUID> {
 }
