@@ -10,6 +10,7 @@ import { User } from '../model/user';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { baseUrl } from '../../../constants';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -31,8 +32,8 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router:Router, private http:HttpClient) {}
   onSubmit() {
     //login
-    var user:User = new User(this.username);
-    this.authService.initUser(user);
+    var user = this.http.get<User>(baseUrl+"/user/auth/"+this.username)
+    user.subscribe(u=>this.authService.initUser(u))
     this.router.navigate(["dashboard"])
   }
   authUser(user: User) {

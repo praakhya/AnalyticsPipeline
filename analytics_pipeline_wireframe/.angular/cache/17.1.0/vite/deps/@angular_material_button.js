@@ -9,11 +9,12 @@ import {
   mixinColor,
   mixinDisableRipple,
   mixinDisabled
-} from "./chunk-QIHCBRM2.js";
-import "./chunk-LAEZOKM6.js";
+} from "./chunk-72ZHUO24.js";
+import "./chunk-PHQ4IM6S.js";
+import "./chunk-JZHA64NT.js";
 import {
   DOCUMENT
-} from "./chunk-ISOSFC42.js";
+} from "./chunk-Z7VPXSBH.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -27,6 +28,8 @@ import {
   NgZone,
   Optional,
   ViewEncapsulation$1,
+  __spreadProps,
+  __spreadValues,
   inject,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
@@ -44,11 +47,7 @@ import {
   ɵɵinvalidFactory,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-W3EUJSHM.js";
-import {
-  __spreadProps,
-  __spreadValues
-} from "./chunk-SXIXOCJ4.js";
+} from "./chunk-VKXPULYJ.js";
 
 // node_modules/@angular/material/fesm2022/button.mjs
 var _c0 = ["mat-button", ""];

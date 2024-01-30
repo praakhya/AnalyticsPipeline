@@ -10,6 +10,14 @@ import { DataService } from '../services/data.service';
 import { Workspace } from '../model/workspace';
 import {MatDividerModule} from '@angular/material/divider';
 import { WorkspaceGridComponent } from '../workspace-grid/workspace-grid.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
+
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -19,7 +27,13 @@ import { WorkspaceGridComponent } from '../workspace-grid/workspace-grid.compone
     MatIconModule,
     FormsModule,
     MatDividerModule,
-    WorkspaceGridComponent
+    WorkspaceGridComponent,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatInputModule,
+    MatChipsModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -32,6 +46,7 @@ export class DashboardComponent {
   constructor(private authService:AuthService, private router:Router, private dataService: DataService){}
   ngOnInit() {
     this.user = this.authService.getUser()
+    console.log("USER:",this.user)
     this.workspaces = this.dataService.getWorkspaces(this.user)
   }
 

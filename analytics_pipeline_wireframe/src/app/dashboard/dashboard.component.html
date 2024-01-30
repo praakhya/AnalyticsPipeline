@@ -3,20 +3,50 @@
         <h1>Welcome {{this.user.username}}</h1>
     </div>
     <mat-divider></mat-divider>
-    <mat-button-toggle-group [(ngModel)]="group_value" class="btn-grp">
-        <mat-button-toggle value="list">
-          <mat-icon>lists</mat-icon>
-        </mat-button-toggle>
-        <mat-button-toggle value="grid">
-            <mat-icon>grid_view</mat-icon>
-          </mat-button-toggle>
+    <div class="operation-tab">
+        <mat-button-toggle-group [(ngModel)]="group_value" class="btn-grp">
+            <mat-button-toggle value="list">
+                <mat-icon>lists</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="grid">
+                <mat-icon>grid_view</mat-icon>
+            </mat-button-toggle>
         </mat-button-toggle-group>
-        @if (group_value=="list") {
-            <app-workspace-list [workspaceList] = this.workspaces></app-workspace-list>
+        <button mat-fab>
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h3>Add a Workspace</h3>
+            </mat-card-title>
+            <mat-card-subtitle>Add a new workspace to start working!</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="owner-chip">
+            <mat-label>Owner Name</mat-label>
+            <mat-chip>
+                <img matChipAvatar src={{this.user.profilePictureURL}} alt="Photo of a Shiba Inu"/>
+                {{this.user.username}}
+            </mat-chip>
+        </div>
+            <form>
+            <div class="inputs">
+                <input class="input" type="text" placeholder="Enter Workspace Name" required/>
+                <input class="input" type="text" placeholder="Enter Workspace Description"/>
+            </div>
+            <button mat-flat-button color="accent" type="submit">Add +</button>
+        </form>
+        </mat-card-content>
+    </mat-card>
 
-        }
-        @else if (group_value=="grid") {
-            <app-workspace-grid [workspaceList] = this.workspaces></app-workspace-grid>
+    @if (group_value=="list") {
+    <app-workspace-list [workspaceList]=this.workspaces></app-workspace-list>
 
-        }
+    }
+    @else if (group_value=="grid") {
+    <app-workspace-grid [workspaceList]=this.workspaces></app-workspace-grid>
+
+    }
 </div>

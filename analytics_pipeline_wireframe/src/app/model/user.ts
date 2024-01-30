@@ -1,6 +1,8 @@
+import { Workspace } from "./workspace";
+
 export class User {
-    username:String;
-    constructor(username:string) {
-        this.username = username
-    }
+    id!:string;
+    profilePictureURL!:string
+    username!:string;
+    workspaces!: Workspace[];
 }

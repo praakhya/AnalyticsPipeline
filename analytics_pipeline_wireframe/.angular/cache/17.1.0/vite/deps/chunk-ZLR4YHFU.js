@@ -1,12 +1,10 @@
 import {
   Injectable,
   InjectionToken,
+  Subject,
   setClassMetadata,
   ɵɵdefineInjectable
-} from "./chunk-W3EUJSHM.js";
-import {
-  Subject
-} from "./chunk-SXIXOCJ4.js";
+} from "./chunk-VKXPULYJ.js";
 
 // node_modules/@angular/cdk/fesm2022/collections.mjs
 var SelectionModel = class {
@@ -256,6 +254,7 @@ var UniqueSelectionDispatcher = _UniqueSelectionDispatcher;
 var _VIEW_REPEATER_STRATEGY = new InjectionToken("_ViewRepeater");
 
 export {
-  SelectionModel
+  SelectionModel,
+  UniqueSelectionDispatcher
 };
-//# sourceMappingURL=chunk-DRXZ5U6U.js.map
+//# sourceMappingURL=chunk-ZLR4YHFU.js.map

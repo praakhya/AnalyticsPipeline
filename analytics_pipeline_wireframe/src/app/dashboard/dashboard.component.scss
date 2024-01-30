@@ -3,6 +3,12 @@
     display: flex;
     padding: 5%;
     flex-direction: column;
+    .operation-tab {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+    }
     .header {
         padding: 2%;
         border-radius: 1em;;        
@@ -19,4 +25,30 @@
     }
     
     
+}
+
+.inputs {
+    .input {
+        height: 3em;
+        width: 100%;
+        padding: 0.3em;
+        border-radius: 1em;
+        border: none;
+        margin: 0.5em;
+        outline: 0.15em solid hsl(0, 0%, 90%);
+    }
+    .input:focus {
+        outline: 0.15em solid hsl(
+            hue($light-blue),
+            100%,
+            49%
+        );
+    }
+
+}
+.owner-chip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
 }
