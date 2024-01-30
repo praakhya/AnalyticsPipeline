@@ -39,4 +39,8 @@ public class UserEndpoint {
   public List<WorkspaceEntity> findAllWorkspacesByUserID(@PathVariable("id") UUID id) {
     return workspaceRepository.findAllWorkspacesFromUserID(id);
   }
+  @RequestMapping(value="/user/auth/{username}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public Optional<UserEntity> findAllUsersByUsername(@PathVariable("username") String username) {
+    return userRepository.findUsersByUsername(username);
+  }
 }

@@ -10,4 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends MongoRepository<UserEntity, UUID> {
+  @Query("{username:?0}")
+  Optional<UserEntity> findUsersByUsername(String username);
 }
