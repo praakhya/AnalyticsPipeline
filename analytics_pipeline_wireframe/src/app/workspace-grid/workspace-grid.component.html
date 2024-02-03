@@ -3,10 +3,16 @@
     @for (ws of workspaceList; track ws) {
         <mat-card class="item">
             <mat-card-header>
-              <mat-card-title>{{ws.title}}</mat-card-title>
+              <mat-card-title>{{ws.workspaceName}}</mat-card-title>
+              <mat-card-subtitle>
+                {{ws.description}}
+              </mat-card-subtitle>
             </mat-card-header>
-            @if (ws.cover) {
-                <img mat-card-image src={{ws.cover}}/>
+            <mat-card-content>
+                
+            </mat-card-content>
+            @if (ws.coverPictureURL) {
+                <img mat-card-image src={{ws.coverPictureURL}}/>
             }
         </mat-card>
           

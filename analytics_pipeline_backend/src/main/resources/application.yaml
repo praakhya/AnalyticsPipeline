@@ -3,3 +3,11 @@ spring:
     mongodb:
       user: test
       uri: mongodb://localhost:27017/analytics_pipeline
+
+application:
+  security:
+    jwt:
+      secret-key-file: jwt_signing_key.pem
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days

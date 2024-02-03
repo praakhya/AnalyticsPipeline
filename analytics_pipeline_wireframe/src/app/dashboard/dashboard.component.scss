@@ -11,7 +11,11 @@
     }
     .header {
         padding: 2%;
-        border-radius: 1em;;        
+        border-radius: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         h1 {
             width: fit-content;
             font-family: $raleway;
@@ -26,11 +30,45 @@
     
     
 }
-
+.close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+.previewImage {
+    width: 3em;
+}
 .inputs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5em;
+    .image-input {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        width: 90%;
+        padding: 0.3em;
+        border: 0.15em dashed hsl(0, 0%, 90%);
+        border-radius: 1em;
+        .input {
+            width: 40%;
+
+        }
+        .previewImage {
+            width: 50%;
+            align-self: center;
+            text-align: right;
+        }
+        .noSource {
+            font-weight: 400;
+        }
+    }
     .input {
         height: 3em;
-        width: 100%;
+        width: 90%;
         padding: 0.3em;
         border-radius: 1em;
         border: none;
@@ -46,9 +84,22 @@
     }
 
 }
+.avatar {
+    border-radius: 100%;
+    display: inline;
+    width: 4em;
+    height: 4em;
+}
 .owner-chip {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1em;
+}
+.empty {
+    width: 100%;;
+    font-family: $titillium;
+    font-size: 5vw;
+    text-align: center;
+    color: gray;
 }

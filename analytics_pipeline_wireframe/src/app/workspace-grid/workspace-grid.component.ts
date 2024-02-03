@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Workspace } from '../model/workspace';
 import { MatCardModule } from '@angular/material/card';
-
+import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-workspace-grid',
   standalone: true,
@@ -12,6 +12,12 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './workspace-grid.component.scss'
 })
 export class WorkspaceGridComponent {
-  @Input() workspaceList:Workspace[] = [];
+  workspaceList:Workspace[] = [];
+  constructor(private dataService: DataService){}
+  ngOnInit() {
+    this.dataService.workspaceList.subscribe(wl=>{
+      this.workspaceList = wl
+    })
+  }
 
 }

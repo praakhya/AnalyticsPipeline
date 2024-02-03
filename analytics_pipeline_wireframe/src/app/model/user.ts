@@ -1,8 +1,12 @@
 import { Workspace } from "./workspace";
 
 export class User {
-    id!:string;
-    profilePictureURL!:string
+    profilePictureURL!:string;
     username!:string;
+    password!:string;
     workspaces!: Workspace[];
+    authTokenRoles!: string[];
+    refreshToken!:string;
+    authToken!:string;
+
 }

@@ -45,15 +45,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5em;
-    width: 100%;
+    gap: 1em;
     font-size: 1em;
     .input {
         height: 3em;
-        width: 100%;
+        width: 90%;
         padding: 0.3em;
         border-radius: 1em;
         border: none;
+        outline: 0.15em solid hsl(0, 0%, 90%);
+    }
+    .input:focus {
+        outline: 0.15em solid hsl(
+            hue($light-blue),
+            100%,
+            49%
+        );
+    }
+
+}
+.inputs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5em;
+    .image-input {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        width: 90%;
+        padding: 0.3em;
+        border: 0.15em dashed hsl(0, 0%, 90%);
+        border-radius: 1em;
+        .input {
+            width: 90%;
+
+        }
+        .previewImage {
+            width: 90%;
+            align-self: center;
+            text-align: right;
+        }
+        .noSource {
+            font-weight: 400;
+        }
+    }
+    .input {
+        height: 3em;
+        width: 90%;
+        padding: 0.3em;
+        border-radius: 1em;
+        border: none;
+        margin: 0.5em;
         outline: 0.15em solid hsl(0, 0%, 90%);
     }
     .input:focus {

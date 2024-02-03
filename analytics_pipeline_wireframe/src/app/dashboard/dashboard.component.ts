@@ -40,14 +40,41 @@ import {MatChipsModule} from '@angular/material/chips';
 })
 export class DashboardComponent {
   user!:User;
-  workspaces:Workspace[]=[];
   group_value:string="list";
+  workspaceName:string="";
+  description:string="";
+  workspaceImgUrl:string="";
+  sourceUnavailable:boolean=false;
+  createMode:boolean = false;
 
   constructor(private authService:AuthService, private router:Router, private dataService: DataService){}
   ngOnInit() {
     this.user = this.authService.getUser()
     console.log("USER:",this.user)
-    this.workspaces = this.dataService.getWorkspaces(this.user)
+    this.dataService.loadWorkspaces(this.user)
+    
   }
+  workspacesExist() {
+    return this.dataService.workspaceList.getValue().length > 0
+  }
+  toggleCreate() {
+    this.createMode = !this.createMode
+  }
+  addWorkspace() {
+    var ws = new Workspace()
+    ws.workspaceName = this.workspaceName;
+    ws.description = this.description;
+    ws.ownerName = this.user.username;
+    ws.coverPictureURL = this.workspaceImgUrl;
+    this.clearInputs()
+    this.dataService.postWorkspace(ws)
+  }
+  clearInputs() {
+    this.workspaceName = ""
+    this.description = ""
+    this.workspaceImgUrl = ""
+    this.createMode = false
+  }
+
 
 }

@@ -1,6 +1,7 @@
 <div class="dashboard-page">
     <div class="header">
         <h1>Welcome {{this.user.username}}</h1>
+        <img src={{this.user.profilePictureURL}} class="avatar"/>
     </div>
     <mat-divider></mat-divider>
     <div class="operation-tab">
@@ -12,41 +13,69 @@
                 <mat-icon>grid_view</mat-icon>
             </mat-button-toggle>
         </mat-button-toggle-group>
-        <button mat-fab>
+        <button mat-fab (click)="toggleCreate()">
             <mat-icon>add</mat-icon>
         </button>
     </div>
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>
-                <h3>Add a Workspace</h3>
-            </mat-card-title>
-            <mat-card-subtitle>Add a new workspace to start working!</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <div class="owner-chip">
-            <mat-label>Owner Name</mat-label>
-            <mat-chip>
-                <img matChipAvatar src={{this.user.profilePictureURL}} alt="Photo of a Shiba Inu"/>
-                {{this.user.username}}
-            </mat-chip>
-        </div>
-            <form>
-            <div class="inputs">
-                <input class="input" type="text" placeholder="Enter Workspace Name" required/>
-                <input class="input" type="text" placeholder="Enter Workspace Description"/>
-            </div>
-            <button mat-flat-button color="accent" type="submit">Add +</button>
-        </form>
-        </mat-card-content>
-    </mat-card>
-
-    @if (group_value=="list") {
-    <app-workspace-list [workspaceList]=this.workspaces></app-workspace-list>
-
+    @if (createMode) {
+        <mat-card style="position: relative">
+            <mat-card-header>
+                <mat-card-title>
+                    <h3>Add a Workspace</h3>
+                    <button mat-mini-fab class="close" (click)="toggleCreate()">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-card-title>
+                <mat-card-subtitle>Add a new workspace to start working!</mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content>
+                <div class="owner-chip">
+                    <mat-label>Owner Name</mat-label>
+                    <mat-chip>
+                        <img matChipAvatar src={{this.user.profilePictureURL}} alt="Photo of a Shiba Inu" />
+                        {{this.user.username}}
+                    </mat-chip>
+                </div>
+                
+                <form>
+                    <div class="inputs">
+                        <input class="input" type="text" placeholder="Enter Workspace Name" required
+                            [(ngModel)]="workspaceName" [ngModelOptions]="{standalone: true}" />
+                        <input class="input" type="text" placeholder="Enter Workspace Description" [(ngModel)]="description"
+                            [ngModelOptions]="{standalone: true}" />
+                        <div class="image-input">
+                            <input class="input" type="text" placeholder="Enter Image Url" [(ngModel)]="workspaceImgUrl"
+                                [ngModelOptions]="{standalone: true}" />
+                            @if (workspaceImgUrl.length > 0) {
+                            <img class="previewImage" src={{workspaceImgUrl}} alt="Unable to load image" />
+                            }
+                            @else if (workspaceImgUrl.length == 0) {
+                            <div class="previewImage noSource">
+                                No Source Selected
+                            </div>
+                            }
+    
+                        </div>
+                    </div>
+    
+                    <button mat-flat-button color="accent" type="submit" (click)="addWorkspace()">Add +</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
     }
-    @else if (group_value=="grid") {
-    <app-workspace-grid [workspaceList]=this.workspaces></app-workspace-grid>
-
+    @if (workspacesExist()) {
+        @if (group_value=="list") {
+            <app-workspace-list></app-workspace-list>
+        
+            }
+            @else if (group_value=="grid") {
+            <app-workspace-grid></app-workspace-grid>
+        
+            }
     }
+    @else {
+        <div class="empty">You have no workspaces. Create a new one!</div>
+    }
+    
 </div>

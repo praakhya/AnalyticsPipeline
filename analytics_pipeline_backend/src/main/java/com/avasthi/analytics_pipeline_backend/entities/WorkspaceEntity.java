@@ -14,10 +14,10 @@ public class WorkspaceEntity {
   }
   @Id
   private UUID id;
-  private String name;
+  private String workspaceName;
   private String coverPictureURL;
-  private UUID ownerID;
-  private List<UUID> partnerIDs;
+  private String ownerName;
+  private List<String> partnerNames;
   private String description;
   private List<UUID> dataIDs;
 }

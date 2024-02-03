@@ -3,9 +3,12 @@ package com.avasthi.analytics_pipeline_backend.endpoints;
 import com.avasthi.analytics_pipeline_backend.entities.DatabaseEntity;
 import com.avasthi.analytics_pipeline_backend.entities.UserEntity;
 import com.avasthi.analytics_pipeline_backend.entities.WorkspaceEntity;
+import com.avasthi.analytics_pipeline_backend.pojos.Workspace;
 import com.avasthi.analytics_pipeline_backend.repositories.DatabaseRepository;
 import com.avasthi.analytics_pipeline_backend.repositories.UserRepository;
 import com.avasthi.analytics_pipeline_backend.repositories.WorkspaceRepository;
+import com.avasthi.analytics_pipeline_backend.services.UserService;
+import com.avasthi.analytics_pipeline_backend.utils.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,31 +19,27 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(Paths.V1.Users.fullPath)
 public class UserEndpoint {
   @Autowired
-  private UserRepository userRepository;
+  private UserService userService;
   @Autowired
   private WorkspaceRepository workspaceRepository;
 
-  @RequestMapping(value = "/user", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public List<UserEntity> findAllUsers() {
-    return userRepository.findAll();
+    return userService.findAll();
   }
-  @RequestMapping(value = "/user", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<UserEntity> postUser(@RequestBody UserEntity userEntity) {
-    return ResponseEntity.ok(userRepository.insert(userEntity));
+  @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+  public Optional<UserEntity> postUser(@RequestBody UserEntity userEntity) {
+    return userService.save(userEntity);
   }
-  @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  public  Optional<UserEntity> findUserByID(@PathVariable("id") UUID id) {
-    return userRepository.findById(id);
+  @RequestMapping(value = Paths.V1.Users.GetOne, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public  Optional<UserEntity> findUserByUsername(@PathVariable(Paths.V1.Users.GetOnePathVariable) String username) {
+    return userService.findOne(username);
   }
-  @RequestMapping(value="/user/workspace/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  public List<WorkspaceEntity> findAllWorkspacesByUserID(@PathVariable("id") UUID id) {
-    return workspaceRepository.findAllWorkspacesFromUserID(id);
-  }
-  @RequestMapping(value="/user/auth/{username}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  public Optional<UserEntity> findAllUsersByUsername(@PathVariable("username") String username) {
-    return userRepository.findUsersByUsername(username);
+  @RequestMapping(value=Paths.V1.Users.GetUserWorkspaces, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public List<Workspace> findAllWorkspacesByUsername(@PathVariable(Paths.V1.Users.WorkspaceVariable) String name) {
+    return userService.findWorkspacesByUsername(name);
   }
 }

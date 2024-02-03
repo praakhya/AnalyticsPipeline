@@ -1,34 +1,31 @@
 package com.avasthi.analytics_pipeline_backend.endpoints;
 
-import com.avasthi.analytics_pipeline_backend.entities.UserEntity;
 import com.avasthi.analytics_pipeline_backend.entities.WorkspaceEntity;
-import com.avasthi.analytics_pipeline_backend.repositories.UserRepository;
-import com.avasthi.analytics_pipeline_backend.repositories.WorkspaceRepository;
+import com.avasthi.analytics_pipeline_backend.services.WorkspaceService;
+import com.avasthi.analytics_pipeline_backend.utils.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(Paths.V1.Workspaces.fullPath)
 public class WorkspaceEndpoint {
   @Autowired
-  private WorkspaceRepository workspaceRepository;
+  private WorkspaceService workpsaceService;
 
-  @RequestMapping(value = "/workspace", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public List<WorkspaceEntity> findAllWorkspaces() {
-    return workspaceRepository.findAll();
+    return workpsaceService.findAll();
   }
-  @RequestMapping(value = "/workspace", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<WorkspaceEntity> postWorkspace(@RequestBody WorkspaceEntity workspaceEntity) {
-    return ResponseEntity.ok(workspaceRepository.insert(workspaceEntity));
+  @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+  public Optional<WorkspaceEntity> postWorkspace(@RequestBody WorkspaceEntity workspaceEntity) {
+    return workpsaceService.save(workspaceEntity);
   }
-  @RequestMapping(value = "/workspace/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  public  Optional<WorkspaceEntity> findWorkspaceByID(@PathVariable("id") UUID id) {
-    return workspaceRepository.findById(id);
+  @RequestMapping(value = Paths.V1.Workspaces.GetOne, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public  Optional<WorkspaceEntity> findWorkspaceByName(@PathVariable(Paths.V1.Workspaces.GetOnePathVariable) String name) {
+    return workpsaceService.findOne(name);
   }
 }

@@ -4,16 +4,23 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    margin: 1em;
     .item {
         display: flex;
         flex-direction: row;
         overflow: hidden;
         justify-content: space-between;
         align-items: center;
-        height: 10vh;
-        .title {
-            width: fit-content;
+        height: 15vh;
+        div {
+            color: gray
+        }
+        .text {
             padding: 3%;
+        }
+        .title {
+            //width: fit-content;
+            width: 100%;
             font-family: $titillium;
             font-weight: 400;
         }

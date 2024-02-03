@@ -1,6 +1,6 @@
 import {
   UniqueSelectionDispatcher
-} from "./chunk-ZLR4YHFU.js";
+} from "./chunk-PGNVSCCE.js";
 import {
   ENTER,
   FocusKeyManager,
@@ -15,14 +15,14 @@ import {
   style,
   transition,
   trigger
-} from "./chunk-72ZHUO24.js";
-import "./chunk-PHQ4IM6S.js";
-import "./chunk-JZHA64NT.js";
+} from "./chunk-NJOHH64E.js";
+import "./chunk-UHXFCMGA.js";
+import "./chunk-OXZZUK4X.js";
 import {
   CommonModule,
   DOCUMENT,
   NgIf
-} from "./chunk-Z7VPXSBH.js";
+} from "./chunk-ISOSFC42.js";
 import {
   ANIMATION_MODULE_TYPE,
   Attribute,
@@ -33,7 +33,6 @@ import {
   ContentChild,
   ContentChildren,
   Directive,
-  EMPTY,
   ElementRef,
   EventEmitter,
   Host,
@@ -46,18 +45,11 @@ import {
   Output,
   QueryList,
   SkipSelf,
-  Subject,
-  Subscription,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation$1,
-  distinctUntilChanged,
-  filter,
-  merge,
   setClassMetadata,
-  startWith,
-  take,
   ɵɵInheritDefinitionFeature,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
@@ -85,7 +77,17 @@ import {
   ɵɵstyleProp,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-VKXPULYJ.js";
+} from "./chunk-W3EUJSHM.js";
+import {
+  EMPTY,
+  Subject,
+  Subscription,
+  distinctUntilChanged,
+  filter,
+  merge,
+  startWith,
+  take
+} from "./chunk-SXIXOCJ4.js";
 
 // node_modules/@angular/cdk/fesm2022/accordion.mjs
 var nextId$1 = 0;

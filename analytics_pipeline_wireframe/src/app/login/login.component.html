@@ -6,11 +6,12 @@
             </mat-card-title>
         </mat-card-header>
         <p class="inputs">
-            <input placeholder="Enter Username" class="input" [(ngModel)]="username">
-            <input placeholder="Enter Password" class="input" type="password" [(ngModel)]="password">
+            <input placeholder="Enter Username" class="input" [(ngModel)]="username" spellcheck="false">
+            <input placeholder="Enter Password" class="input" type="password" [(ngModel)]="password" spellcheck="false">
+            <span class="error">{{errorMessage}}</span>
         </p>
         <mat-card-actions>
-            <a href="dashboard" mat-stroked-button color="primary" (click)="onSubmit()">Login</a>
+            <a mat-stroked-button color="primary" (click)="authUser()">Login</a>
             <span>
                 <a href="signup">Signup</a> here
             </span>

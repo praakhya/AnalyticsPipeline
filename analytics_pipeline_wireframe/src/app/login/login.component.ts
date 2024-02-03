@@ -8,9 +8,10 @@ import { AuthService } from '../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { User } from '../model/user';
 import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { baseUrl } from '../../../constants';
+import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -29,15 +30,16 @@ import { baseUrl } from '../../../constants';
 export class LoginComponent {
   username: string = "";
   password: string = "";
+  errorMessage:string = "";
   constructor(private authService: AuthService, private router:Router, private http:HttpClient) {}
-  onSubmit() {
-    //login
-    var user = this.http.get<User>(baseUrl+"/user/auth/"+this.username)
-    user.subscribe(u=>this.authService.initUser(u))
-    this.router.navigate(["dashboard"])
+  ngOnInit() {
+    this.authService.authError.subscribe(err=>{
+      console.log(err)
+      this.errorMessage = err
+    })
   }
-  authUser(user: User) {
-    
-  }
+  authUser() {
+    this.authService.authUser(this.username, this.password)
+  } 
 
 }

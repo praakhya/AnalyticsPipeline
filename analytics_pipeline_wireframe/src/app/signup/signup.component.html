@@ -5,12 +5,25 @@
                 <span class="title">Signup</span>
             </mat-card-title>
         </mat-card-header>
-        <p class="inputs">
-            <input placeholder="Enter Username" class="input">
-            <input placeholder="Enter Password" class="input" type="password">
-        </p>
+        <mat-card-content class="inputs">
+            <input placeholder="Enter Username" class="input" [(ngModel)]="username">
+            <input placeholder="Enter Password" class="input" type="password" [(ngModel)]="password">
+            <div class="image-input">
+                <input class="input" type="text" placeholder="Enter Image Url" [(ngModel)]="profilePicUrl"
+                    [ngModelOptions]="{standalone: true}" />
+                @if (profilePicUrl.length > 0) {
+                <img class="previewImage" src={{profilePicUrl}} alt="Unable to load image" />
+                }
+                @else if (profilePicUrl.length == 0) {
+                <div class="previewImage noSource">
+                    No Source Selected
+                </div>
+                }
+
+            </div>
+        </mat-card-content>
         <mat-card-actions>
-            <button mat-stroked-button color="primary">Signup</button>
+            <button mat-stroked-button color="primary" (click)="signup()">Signup</button>
             <span>
                 <a href="login">Login</a> here
             </span>
