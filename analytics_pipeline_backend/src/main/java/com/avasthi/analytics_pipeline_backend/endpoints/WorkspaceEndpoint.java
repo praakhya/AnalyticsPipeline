@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(Paths.V1.Workspaces.fullPath)
@@ -23,6 +24,15 @@ public class WorkspaceEndpoint {
   @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
   public Optional<WorkspaceEntity> postWorkspace(@RequestBody WorkspaceEntity workspaceEntity) {
     return workpsaceService.save(workspaceEntity);
+  }
+
+  @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+  public Optional<WorkspaceEntity> changeWorkspace(@RequestBody WorkspaceEntity workspaceEntity) {
+    return workpsaceService.changeWorkspace(workspaceEntity);
+  }
+  @RequestMapping(value= Paths.V1.Workspaces.GetOne, method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+  public Optional<WorkspaceEntity> deleteWorkspace(@PathVariable(Paths.V1.Workspaces.GetOnePathVariable) UUID id) {
+    return workpsaceService.deleteByID(id);
   }
   @RequestMapping(value = Paths.V1.Workspaces.GetOne, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   public  Optional<WorkspaceEntity> findWorkspaceByName(@PathVariable(Paths.V1.Workspaces.GetOnePathVariable) String name) {

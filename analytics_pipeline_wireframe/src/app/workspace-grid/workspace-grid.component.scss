@@ -19,6 +19,17 @@
             font-family: $titillium;
             font-weight: 400;
         }
+        img {
+            width: 100%;
+            max-height: 10em;
+        }
 
     }
+}
+.actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    justify-content: flex-end;
+    width: 100%;
 }

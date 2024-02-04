@@ -1,3 +1,4 @@
+import { AuthToken } from "./auth-token";
 import { Workspace } from "./workspace";
 
 export class User {
@@ -7,6 +8,6 @@ export class User {
     workspaces!: Workspace[];
     authTokenRoles!: string[];
     refreshToken!:string;
-    authToken!:string;
+    authToken!:AuthToken;
 
 }

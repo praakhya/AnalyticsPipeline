@@ -25,6 +25,16 @@ public class WorkspaceService {
     return workspaceRepository.findAll();
   }
 
+  public Optional<WorkspaceEntity> deleteByID(UUID id) {
+    Optional<WorkspaceEntity> deletedWorkspace = findOneByID(id);
+    workspaceRepository.deleteById(id);
+    return deletedWorkspace;
+  }
+
+  public Optional<WorkspaceEntity> changeWorkspace(WorkspaceEntity workspaceEntity) {
+    return Optional.of(workspaceRepository.save(workspaceEntity));
+  }
+
   public Optional<WorkspaceEntity> save(WorkspaceEntity workspaceEntity) {
     if (workspaceRepository.findWorkspaceByName(workspaceEntity.getWorkspaceName()).isPresent()) {
 

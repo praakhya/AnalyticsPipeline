@@ -24,7 +24,6 @@ public class UserEntity extends AbstractBaseEntity implements UserDetails {
   private String password;
   @Id
   private UUID id;
-  private List<WorkspaceEntity> workspaces;
   private Set<Role> grantedAuthorities;
   private boolean expired = false;
   private boolean locked = false;

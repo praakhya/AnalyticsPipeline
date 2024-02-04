@@ -3,6 +3,7 @@ import com.avasthi.analytics_pipeline_backend.annotations.RefreshRolePermission;
 import com.avasthi.analytics_pipeline_backend.entities.UserEntity;
 import com.avasthi.analytics_pipeline_backend.pojos.AuthToken;
 import com.avasthi.analytics_pipeline_backend.pojos.Login;
+import com.avasthi.analytics_pipeline_backend.pojos.User;
 import com.avasthi.analytics_pipeline_backend.services.AuthenticationService;
 import com.avasthi.analytics_pipeline_backend.utils.Paths;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.Optional;
 public class AuthEndpoint {
   private final AuthenticationService authenticateService;
   @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-  public Optional<AuthToken> login(@RequestBody Login login) {
+  public Optional<User> login(@RequestBody Login login) {
     return authenticateService.auth(login);
   }
   @RefreshRolePermission
