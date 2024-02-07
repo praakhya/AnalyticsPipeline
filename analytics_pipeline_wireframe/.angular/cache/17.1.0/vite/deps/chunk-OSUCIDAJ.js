@@ -5,10 +5,115 @@ import {
   ɵɵdefineInjectable
 } from "./chunk-W3EUJSHM.js";
 import {
-  Subject
+  ConnectableObservable,
+  Subject,
+  isObservable,
+  of
 } from "./chunk-SXIXOCJ4.js";
 
 // node_modules/@angular/cdk/fesm2022/collections.mjs
+var DataSource = class {
+};
+function isDataSource(value) {
+  return value && typeof value.connect === "function" && !(value instanceof ConnectableObservable);
+}
+var ArrayDataSource = class extends DataSource {
+  constructor(_data) {
+    super();
+    this._data = _data;
+  }
+  connect() {
+    return isObservable(this._data) ? this._data : of(this._data);
+  }
+  disconnect() {
+  }
+};
+var _RecycleViewRepeaterStrategy = class {
+  constructor() {
+    this.viewCacheSize = 20;
+    this._viewCache = [];
+  }
+  /** Apply changes to the DOM. */
+  applyChanges(changes, viewContainerRef, itemContextFactory, itemValueResolver, itemViewChanged) {
+    changes.forEachOperation((record, adjustedPreviousIndex, currentIndex) => {
+      let view;
+      let operation;
+      if (record.previousIndex == null) {
+        const viewArgsFactory = () => itemContextFactory(record, adjustedPreviousIndex, currentIndex);
+        view = this._insertView(viewArgsFactory, currentIndex, viewContainerRef, itemValueResolver(record));
+        operation = view ? 1 : 0;
+      } else if (currentIndex == null) {
+        this._detachAndCacheView(adjustedPreviousIndex, viewContainerRef);
+        operation = 3;
+      } else {
+        view = this._moveView(adjustedPreviousIndex, currentIndex, viewContainerRef, itemValueResolver(record));
+        operation = 2;
+      }
+      if (itemViewChanged) {
+        itemViewChanged({
+          context: view?.context,
+          operation,
+          record
+        });
+      }
+    });
+  }
+  detach() {
+    for (const view of this._viewCache) {
+      view.destroy();
+    }
+    this._viewCache = [];
+  }
+  /**
+   * Inserts a view for a new item, either from the cache or by creating a new
+   * one. Returns `undefined` if the item was inserted into a cached view.
+   */
+  _insertView(viewArgsFactory, currentIndex, viewContainerRef, value) {
+    const cachedView = this._insertViewFromCache(currentIndex, viewContainerRef);
+    if (cachedView) {
+      cachedView.context.$implicit = value;
+      return void 0;
+    }
+    const viewArgs = viewArgsFactory();
+    return viewContainerRef.createEmbeddedView(viewArgs.templateRef, viewArgs.context, viewArgs.index);
+  }
+  /** Detaches the view at the given index and inserts into the view cache. */
+  _detachAndCacheView(index, viewContainerRef) {
+    const detachedView = viewContainerRef.detach(index);
+    this._maybeCacheView(detachedView, viewContainerRef);
+  }
+  /** Moves view at the previous index to the current index. */
+  _moveView(adjustedPreviousIndex, currentIndex, viewContainerRef, value) {
+    const view = viewContainerRef.get(adjustedPreviousIndex);
+    viewContainerRef.move(view, currentIndex);
+    view.context.$implicit = value;
+    return view;
+  }
+  /**
+   * Cache the given detached view. If the cache is full, the view will be
+   * destroyed.
+   */
+  _maybeCacheView(view, viewContainerRef) {
+    if (this._viewCache.length < this.viewCacheSize) {
+      this._viewCache.push(view);
+    } else {
+      const index = viewContainerRef.indexOf(view);
+      if (index === -1) {
+        view.destroy();
+      } else {
+        viewContainerRef.remove(index);
+      }
+    }
+  }
+  /** Inserts a recycled view from the cache at the given index. */
+  _insertViewFromCache(index, viewContainerRef) {
+    const cachedView = this._viewCache.pop();
+    if (cachedView) {
+      viewContainerRef.insert(cachedView, index);
+    }
+    return cachedView || null;
+  }
+};
 var SelectionModel = class {
   /** Selected values. */
   get selected() {
@@ -256,7 +361,11 @@ var UniqueSelectionDispatcher = _UniqueSelectionDispatcher;
 var _VIEW_REPEATER_STRATEGY = new InjectionToken("_ViewRepeater");
 
 export {
+  isDataSource,
+  ArrayDataSource,
+  _RecycleViewRepeaterStrategy,
   SelectionModel,
-  UniqueSelectionDispatcher
+  UniqueSelectionDispatcher,
+  _VIEW_REPEATER_STRATEGY
 };
-//# sourceMappingURL=chunk-PGNVSCCE.js.map
+//# sourceMappingURL=chunk-OSUCIDAJ.js.map

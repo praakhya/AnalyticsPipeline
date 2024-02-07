@@ -213,6 +213,55 @@ function supportsPassiveEventListeners() {
 function normalizePassiveListenerOptions(options) {
   return supportsPassiveEventListeners() ? options : !!options.capture;
 }
+var rtlScrollAxisType;
+var scrollBehaviorSupported;
+function supportsScrollBehavior() {
+  if (scrollBehaviorSupported == null) {
+    if (typeof document !== "object" || !document || typeof Element !== "function" || !Element) {
+      scrollBehaviorSupported = false;
+      return scrollBehaviorSupported;
+    }
+    if ("scrollBehavior" in document.documentElement.style) {
+      scrollBehaviorSupported = true;
+    } else {
+      const scrollToFunction = Element.prototype.scrollTo;
+      if (scrollToFunction) {
+        scrollBehaviorSupported = !/\{\s*\[native code\]\s*\}/.test(scrollToFunction.toString());
+      } else {
+        scrollBehaviorSupported = false;
+      }
+    }
+  }
+  return scrollBehaviorSupported;
+}
+function getRtlScrollAxisType() {
+  if (typeof document !== "object" || !document) {
+    return 0;
+  }
+  if (rtlScrollAxisType == null) {
+    const scrollContainer = document.createElement("div");
+    const containerStyle = scrollContainer.style;
+    scrollContainer.dir = "rtl";
+    containerStyle.width = "1px";
+    containerStyle.overflow = "auto";
+    containerStyle.visibility = "hidden";
+    containerStyle.pointerEvents = "none";
+    containerStyle.position = "absolute";
+    const content = document.createElement("div");
+    const contentStyle = content.style;
+    contentStyle.width = "2px";
+    contentStyle.height = "1px";
+    scrollContainer.appendChild(content);
+    document.body.appendChild(scrollContainer);
+    rtlScrollAxisType = 0;
+    if (scrollContainer.scrollLeft === 0) {
+      scrollContainer.scrollLeft = 1;
+      rtlScrollAxisType = scrollContainer.scrollLeft === 0 ? 1 : 2;
+    }
+    scrollContainer.remove();
+  }
+  return rtlScrollAxisType;
+}
 var shadowDomIsSupported;
 function _supportsShadowDom() {
   if (shadowDomIsSupported == null) {
@@ -262,6 +311,7 @@ var ENTER = 13;
 var SHIFT = 16;
 var CONTROL = 17;
 var ALT = 18;
+var ESCAPE = 27;
 var SPACE = 32;
 var PAGE_UP = 33;
 var PAGE_DOWN = 34;
@@ -297,6 +347,12 @@ function _isNumberValue(value) {
 }
 function coerceArray(value) {
   return Array.isArray(value) ? value : [value];
+}
+function coerceCssPixelValue(value) {
+  if (value == null) {
+    return "";
+  }
+  return typeof value === "string" ? value : `${value}px`;
 }
 function coerceElement(elementOrRef) {
   return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
@@ -9328,19 +9384,33 @@ export {
   Platform,
   getSupportedInputTypes,
   normalizePassiveListenerOptions,
+  supportsScrollBehavior,
+  getRtlScrollAxisType,
+  _getEventTarget,
+  _isTestEnvironment,
   BACKSPACE,
   TAB,
   ENTER,
+  ESCAPE,
   SPACE,
+  LEFT_ARROW,
+  UP_ARROW,
+  RIGHT_ARROW,
+  DOWN_ARROW,
   DELETE,
   hasModifierKey,
   coerceBooleanProperty,
   coerceNumberProperty,
+  coerceArray,
+  coerceCssPixelValue,
   coerceElement,
   ObserversModule,
   FocusKeyManager,
+  isFakeMousedownFromScreenReader,
+  isFakeTouchstartFromScreenReader,
   FocusMonitor,
   Directionality,
+  BidiModule,
   trigger,
   animate,
   style,
@@ -9380,4 +9450,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-NJOHH64E.js.map
+//# sourceMappingURL=chunk-CKU55T4X.js.map
