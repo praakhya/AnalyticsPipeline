@@ -1,7 +1,34 @@
 <mat-toolbar color="primary" id="navbar">
     <a id="navbar-title" href="">Analytics Pipeline</a>
+
+    <ng-template #menu>
+        <mat-list class="login-menu" cdkMenu>
+            @if (this.userSignal() && this.userSignal()?.username) {
+                <mat-list-item class="greeting">Welcome {{this.userSignal()?.username}}</mat-list-item>
+                <mat-divider></mat-divider>
+
+            }
+          <mat-list-item cdkMenuItem>Settings</mat-list-item>
+          <mat-list-item cdkMenuItem>Help</mat-list-item>
+          <mat-list-item cdkMenuItem (click)="logout()">Sign out</mat-list-item>
+        </mat-list>
+      </ng-template>
+    <!-- <mat-icon>favorite</mat-icon> -->
     @if (isLoggedIn()) {
-        <button mat-stroked-button (click)="logout()">Logout</button>
+        
+        @if (this.userSignal() && this.userSignal()?.profilePictureURL) {
+            <div [cdkMenuTriggerFor]="menu" mat-button class="avatar">
+                <img  src={{this.userSignal()?.profilePictureURL}}  />
+            </div>
+        }
+        @else {
+            <div [cdkMenuTriggerFor]="menu" class="avatar" mat-button>
+                <mat-icon>person</mat-icon>
+            </div>
+
+        }
+
     }
-    
+
+
 </mat-toolbar>

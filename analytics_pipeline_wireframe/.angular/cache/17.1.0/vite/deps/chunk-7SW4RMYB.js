@@ -28,6 +28,35 @@ var ArrayDataSource = class extends DataSource {
   disconnect() {
   }
 };
+var _DisposeViewRepeaterStrategy = class {
+  applyChanges(changes, viewContainerRef, itemContextFactory, itemValueResolver, itemViewChanged) {
+    changes.forEachOperation((record, adjustedPreviousIndex, currentIndex) => {
+      let view;
+      let operation;
+      if (record.previousIndex == null) {
+        const insertContext = itemContextFactory(record, adjustedPreviousIndex, currentIndex);
+        view = viewContainerRef.createEmbeddedView(insertContext.templateRef, insertContext.context, insertContext.index);
+        operation = 1;
+      } else if (currentIndex == null) {
+        viewContainerRef.remove(adjustedPreviousIndex);
+        operation = 3;
+      } else {
+        view = viewContainerRef.get(adjustedPreviousIndex);
+        viewContainerRef.move(view, currentIndex);
+        operation = 2;
+      }
+      if (itemViewChanged) {
+        itemViewChanged({
+          context: view?.context,
+          operation,
+          record
+        });
+      }
+    });
+  }
+  detach() {
+  }
+};
 var _RecycleViewRepeaterStrategy = class {
   constructor() {
     this.viewCacheSize = 20;
@@ -361,11 +390,13 @@ var UniqueSelectionDispatcher = _UniqueSelectionDispatcher;
 var _VIEW_REPEATER_STRATEGY = new InjectionToken("_ViewRepeater");
 
 export {
+  DataSource,
   isDataSource,
   ArrayDataSource,
+  _DisposeViewRepeaterStrategy,
   _RecycleViewRepeaterStrategy,
   SelectionModel,
   UniqueSelectionDispatcher,
   _VIEW_REPEATER_STRATEGY
 };
-//# sourceMappingURL=chunk-OSUCIDAJ.js.map
+//# sourceMappingURL=chunk-7SW4RMYB.js.map

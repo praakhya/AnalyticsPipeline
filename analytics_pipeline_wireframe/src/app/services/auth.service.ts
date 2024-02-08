@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, WritableSignal, signal } from '@angular/core';
 import { User } from '../model/user';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -10,9 +10,19 @@ import { urlTree, makeUrl } from '../../../constants';
 })
 export class AuthService {
   authError: BehaviorSubject<string> = new BehaviorSubject("")
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  user:WritableSignal<User|undefined> = signal(undefined)
+  constructor(private httpClient: HttpClient, private router: Router) { 
+    var storedUser = this.getUser()
+    if (storedUser!=undefined && storedUser!=null) {
+      this.user.set(storedUser)
+    }
+  }
   initUser(user: User) {
+    this.user.set(user)
     localStorage.setItem("user", JSON.stringify(user));
+  }
+  getUserSignal() {
+    return this.user
   }
   getUser() {
     return JSON.parse(localStorage.getItem("user")!) as User;
@@ -25,6 +35,7 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem("user")
+    this.user.set(undefined);
     window.location.reload();
   }
   signup(user: User) {

@@ -1,28 +1,26 @@
-
-<div class="items">
+<mat-list class="items">
     @for (ws of workspaceList; track ws) {
-        <mat-card class="item">
-            <mat-card-header class="text">
-                <mat-card-title class="title">
-                    {{ws.workspaceName}}
-                </mat-card-title>
-                <mat-card-subtitle>
-                    {{ws.description}}
-                  </mat-card-subtitle>
-            </mat-card-header>
-            @if (ws.coverPictureURL) {
-                <img src={{ws.coverPictureURL}}/>
-            }
-            <mat-card-actions class="actions">
-                <button mat-button>
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-button>
-                  <mat-icon>delete</mat-icon>
-                </button>
-            </mat-card-actions>
+
+    <mat-list-item class="item" line="5">
+        <div class="content">
+            <div matListItemTitle class="title">{{ws.workspaceName}}</div>
+            <div  class="line">
+                <span class="desc" matListItemLine>{{ws.description}}</span>
+                <div  class="actions">
+                    <button mat-icon-button><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+                </div>
+            </div>
             
-        </mat-card>
+            
+            
+            <div matListItemLine></div>
+        </div>
+        
+
+    </mat-list-item>
+
+
     }
-    
-</div>
+
+</mat-list>

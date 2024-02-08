@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { FooterComponent } from '../app/footer/footer.component';
 import { AuthService } from '../app/services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -11,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     MatCardModule,
     MatButtonModule,
-    FooterComponent,
     MatIconModule
   ],
   templateUrl: './landing.component.html',

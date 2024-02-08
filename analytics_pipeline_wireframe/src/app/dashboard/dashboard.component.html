@@ -1,24 +1,24 @@
-<div class="dashboard-page">
+<div class="dashboard-page background">
     <div class="header">
         <h1>Welcome {{this.user.username}}</h1>
-        <img src={{this.user.profilePictureURL}} class="avatar"/>
+        <div class="operation-tab">
+            <mat-button-toggle-group [(ngModel)]="group_value" class="btn-grp">
+                <mat-button-toggle value="list">
+                    <mat-icon>lists</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle value="grid">
+                    <mat-icon>grid_view</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            <button mat-fab (click)="toggleCreate()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
     </div>
-    <mat-divider></mat-divider>
-    <div class="operation-tab">
-        <mat-button-toggle-group [(ngModel)]="group_value" class="btn-grp">
-            <mat-button-toggle value="list">
-                <mat-icon>lists</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle value="grid">
-                <mat-icon>grid_view</mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-        <button mat-fab (click)="toggleCreate()">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
+    <hr class="divider"/>
+    
     @if (createMode) {
-        <mat-card style="position: relative">
+        <mat-card style="position: relative" class="create-card">
             <mat-card-header>
                 <mat-card-title>
                     <h3>Add a Workspace</h3>
@@ -75,7 +75,10 @@
             }
     }
     @else {
-        <div class="empty">You have no workspaces. Create a new one!</div>
+        <div class="empty">
+            You have no workspaces.
+            <br/>
+            Create a new one!</div>
     }
     
 </div>

@@ -6,9 +6,18 @@
         saturation($light-blue),
         lightness($light-blue)-55%); */
     font-weight: 300;
-    font-size: 2em;
+    font-size: calc($font-size * 2);
     text-decoration: none;
     
+}
+.avatar {
+    border-radius: 100%;
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    img {
+        width: 100%;;
+    }
 }
 #navbar {
     display: flex;
@@ -16,4 +25,17 @@
     justify-content: space-between;
     align-items: center;
 
+}
+.login-menu {
+    background-color: $amber;
+    margin: 1em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+
+    
+}
+.greeting {
+    border-bottom: 3px solid hsl(
+        hue($amber),saturation($amber),50
+    );
 }

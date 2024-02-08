@@ -1,11 +1,13 @@
 import {
   MatCommonModule,
-  coerceBooleanProperty,
   mixinColor
-} from "./chunk-CKU55T4X.js";
+} from "./chunk-DDASAFPV.js";
 import {
   DomSanitizer
 } from "./chunk-UHXFCMGA.js";
+import {
+  coerceBooleanProperty
+} from "./chunk-6EMGHWFY.js";
 import {
   HttpClient
 } from "./chunk-OXZZUK4X.js";
