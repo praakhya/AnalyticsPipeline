@@ -1,46 +1,9 @@
-    <div (click)="panelOpenState = !panelOpenState">
-      
-      <p>This is the primary content of the panel.</p>
-    </div>
-    @if (panelOpenState) {
-        <div (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      
-      <p>I'm visible because I am open</p>
-    </div>
-    }
+    
   
-   @for (ws of workspaceList; track ws) {
+<div class="items">
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Self aware panel
-            </mat-panel-title>
-            <mat-panel-description>
-                Currently I am {{panelOpenState ? 'open' : 'closed'}}
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-}
-
-    <!-- <mat-list-item class="item" line="5">
-        <div class="content">
-            <div matListItemTitle class="title">{{ws.workspaceName}}</div>
-            <div  class="line">
-                <span class="desc" matListItemLine>{{ws.description}}</span>
-                <div  class="actions">
-                    <button mat-icon-button><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button><mat-icon>delete</mat-icon></button>
-                </div>
-            </div>
-            
-            
-            
-            <div matListItemLine></div>
-        </div>
+    @for (ws of workspaceList; track ws) {
+        <app-workspace-list-item [workspace]="ws"></app-workspace-list-item>
         
-
-    </mat-list-item> -->
-
+    }
+</div>

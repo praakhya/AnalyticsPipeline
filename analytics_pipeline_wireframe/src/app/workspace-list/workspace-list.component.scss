@@ -2,55 +2,7 @@
 
 .items {
     border-radius: $border-radius;
-}
-.item {
-    border: 1px solid white;
-    background-color: hsl(hue($amber), saturation($amber), 100%, 0.5);
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    
-    div {
-        width: fit-content;
-    }
-    .title {
-        font-size: calc($font-size * 1.5);
-    }
-    .desc {
-        font-size: calc($font-size * 1);
-        max-width: calc($list-width*0.7);
-    
-    }
-    .line {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-    }
-    .content {
-        display: flex;
-        flex-direction: column;
-        width: $list-width;
-        .actions {
-            align-self: flex-end;
-            button {
-                mat-icon {
-                    font-size: calc($font-size*1.5);
-                }
-            }
-        }
-    }
-}
-.item:hover {
-    background-color: hsl(hue($amber), saturation($amber), lightness($amber));;
-}
-.item:last-child {
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-}
-.item:first-child {
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
 }

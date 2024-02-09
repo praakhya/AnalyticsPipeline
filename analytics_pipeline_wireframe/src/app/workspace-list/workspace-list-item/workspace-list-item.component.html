@@ -1,0 +1,25 @@
+<div class="panel" (mouseleave)="togglePanelContent(false)">
+    <div (mouseenter)="togglePanelContent(true)" class="panel-header">
+
+        <p class="title">{{workspace.workspaceName}}</p>
+        <p class="owner">{{workspace.ownerName}}</p>
+    </div>
+    
+    
+    
+    <div class="{{ classListGetter() }}">
+        @if (workspace.coverPictureURL) {
+        <div class="image-container">
+            <img src={{workspace.coverPictureURL}}/>
+        </div>
+        }
+        <div class="description">
+        <p>{{workspace.description}}</p>
+        <div class="actions">
+               <mat-icon>edit</mat-icon>
+                <mat-icon>delete</mat-icon>
+        </div>
+    </div>
+    </div>
+    
+</div>

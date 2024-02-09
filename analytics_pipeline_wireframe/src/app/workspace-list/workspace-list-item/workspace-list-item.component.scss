@@ -1,0 +1,119 @@
+@import "../../../vars.scss";
+.panel {
+    overflow: hidden;
+    margin: 0.5em;
+    width: $list-width;
+    border-radius: $border-radius;
+    gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    background-color: $amber;
+    padding: 0.2em;
+
+}
+.with-image {
+    color: white;
+}
+.panel-header {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: $border-radius;
+    gap: 1em;
+    .title {
+        font-family: $titillium;
+        font-weight: 600;
+        font-size: calc($font-size * 1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: hsl(
+                hue($light-blue),
+                saturation($light-blue),
+                20%
+            )
+    }
+    .owner {
+        min-width: 10%;
+        font-family: $titillium;
+        font-weight: 400;
+        font-size: calc($font-size * 0.8);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.panel-content {
+    height: 0;
+    max-height: 15vh;
+    opacity: 0;
+    overflow: hidden;
+    flex-direction: row;
+    justify-content: flex-start;
+    box-shadow: rgb(0, 0, 0, 0.3) 3px 3px 6px 0px inset, hsla(
+            hue($light-blue),
+            saturation($light-blue),
+            85%,
+            0.6) -3px -3px 6px 1px inset;
+    gap: 1em;
+    width: 100%;
+    transition: transform 5s;
+    display: none;
+    transition: all 1s allow-discrete;
+    background-color: hsl(
+        hue($light-blue),
+        saturation($light-blue),
+        85%
+    );
+    border-radius: $border-radius;
+    .description {
+        display: flex;
+        flex-direction: row;
+        height: 80%;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1em;
+        width: 50%;
+        
+        p {
+            width: 80%;
+            overflow-wrap: break-word;
+            overflow: hidden;
+            height: 80%;
+            font-size: $font-size;
+        }
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            height: 80%;
+        }
+    }
+    
+    .image-container {
+        max-width: 40%;
+        overflow: hidden;
+    }
+    img {
+        height: 100%;;
+        
+        
+        
+    }
+}
+.showing {
+    height: 12vh;
+    display: flex;
+    opacity: 100%;
+}
+@starting-style {
+    .showing {
+      height: 0;
+      opacity: 0%;
+    }
+  }

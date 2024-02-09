@@ -5,9 +5,8 @@ import { DataService } from '../services/data.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import {MatAccordion, MatExpansionModule, matExpansionAnimations} from '@angular/material/expansion';
-import { MatAccordionBase } from '@angular/material/expansion';
-import { MatExpansionPanelContent } from '@angular/material/expansion';
+import { WorkspaceListItemComponent } from './workspace-list-item/workspace-list-item.component';
+
 @Component({
   selector: 'app-workspace-list',
   standalone: true,
@@ -16,7 +15,7 @@ import { MatExpansionPanelContent } from '@angular/material/expansion';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    MatExpansionModule,
+    WorkspaceListItemComponent
   ],
   animations:[],
   templateUrl: './workspace-list.component.html',
@@ -26,7 +25,6 @@ export class WorkspaceListComponent {
   workspaceList:Workspace[] = [];
   dataSource:Workspace[] = [];
   columns: string[] = ['Workspace name', 'Description', 'Owner'];
-  @ViewChild(MatAccordion) accordion: MatAccordion | undefined;
 
 
   panelOpenState = false;

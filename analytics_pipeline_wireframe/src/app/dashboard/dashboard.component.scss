@@ -23,7 +23,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-end;
-        
+        .add-button {
+            box-shadow: none;
+        }
     }
     .header {
         border-radius: $border-radius;

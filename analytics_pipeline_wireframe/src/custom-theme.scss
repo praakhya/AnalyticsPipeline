@@ -10,6 +10,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
@@ -27,6 +28,7 @@ $my-theme: mat.define-light-theme((
     accent: $my-accent,
     warn: $my-warn,
   )
+  
 ));
 
 // Include theme styles for core and each component used in your app.
@@ -36,4 +38,4 @@ $my-theme: mat.define-light-theme((
 
 
 html, body { height: 100%; width: 100vw; overflow-x: hidden;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; @include mat.elevation(2);}
