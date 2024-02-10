@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, WritableSignal } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
@@ -16,6 +16,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import { SidenavService } from '../services/sidenav.service';
 
 
 @Component({
@@ -46,8 +47,10 @@ export class DashboardComponent {
   workspaceImgUrl:string="";
   sourceUnavailable:boolean=false;
   createMode:boolean = false;
-
-  constructor(private authService:AuthService, private router:Router, private dataService: DataService){}
+  maxHeightSignal:WritableSignal<any>
+  constructor(private authService:AuthService, private router:Router, private dataService: DataService, private navService: SidenavService){
+    this.maxHeightSignal = this.navService.getCreateStyleSignal()
+  }
   ngOnInit() {
     this.user = this.authService.getUser()
     console.log("USER:",this.user)
@@ -59,6 +62,13 @@ export class DashboardComponent {
   }
   toggleCreate() {
     this.createMode = !this.createMode
+    if (this.createMode) {
+      this.maxHeightSignal.set("50%")
+    }
+    else {
+      this.maxHeightSignal.set("0")
+    }
+    console.log(this.maxHeightSignal())
   }
   addWorkspace() {
     var ws = new Workspace()

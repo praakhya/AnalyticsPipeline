@@ -12,6 +12,7 @@ export class SidenavService {
     height:"0",
     "display":"none"
   })
+  currentCreateStyleSignal:WritableSignal<any> = signal("0")
   constructor() { }
   setWorkspace(ws:Workspace|undefined) {
     console.log("In set workspace: ")
@@ -19,13 +20,14 @@ export class SidenavService {
     this.currentWorkspaceSignal.set(ws)
     if (ws!=undefined) {
       this.currentStyleSignal.set({
-        height:"50vh",
+        
+        maxHeight:"50vh",
         "display":"flex"
       })
     }
     else {
       this.currentStyleSignal.set({
-        height:"0",
+        maxHeight:"0",
         "display":"none"
       })
     }
@@ -36,6 +38,9 @@ export class SidenavService {
   }
   getStyleSignal() {
     return this.currentStyleSignal
+  }
+  getCreateStyleSignal() {
+    return this.currentCreateStyleSignal
   }
 
 }

@@ -1,26 +1,11 @@
 @import "../../../vars.scss";
 .panel {
-    overflow: hidden;
-    margin: 0.5em;
     width: $list-width;
-    border-radius: $border-radius;
-    gap: 0.5em;
     display: flex;
-    flex-direction: column;
-    background-color: hsl(hue($amber), saturation($amber), 63);
-    padding: 0.2em;
+    background-color: $amber;
+    padding: 0.5em;
+    border-radius: 0.5em;
 
-}
-.panel-header {
-    display: flex;
-    flex-basis: auto;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 1em;
-    padding-right: 1em;
-    border-radius: $border-radius;
-    gap: 1em;
     .title {
         font-family: $titillium;
         font-weight: 600;
@@ -33,11 +18,13 @@
         min-width: 10%;
         font-family: $titillium;
         font-weight: 400;
-        font-size: calc($font-size * 0.8);
+        font-size: $font-size;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: right;
     }
 }
-
-
+.panel:hover {
+    background-color: $light-blue;
+}

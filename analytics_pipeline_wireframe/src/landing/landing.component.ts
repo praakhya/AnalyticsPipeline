@@ -3,14 +3,15 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../app/services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-landing',
   standalone: true,
   imports: [
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'

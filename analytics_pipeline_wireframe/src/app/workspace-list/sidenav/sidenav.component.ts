@@ -4,12 +4,17 @@ import { Workspace } from '../../model/workspace';
 import { ViewChild, ElementRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+
 @Component({
   selector: 'app-sidenav',
   standalone: true,
   imports: [
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatDividerModule,
   ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss'

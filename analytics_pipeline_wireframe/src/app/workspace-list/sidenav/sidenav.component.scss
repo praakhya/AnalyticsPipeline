@@ -1,104 +1,61 @@
 @import '../../../vars.scss';
 
 .sidenav {
-    box-shadow: -1px -8px 36px -9px rgba(0, 0, 0, 0.57);
-    height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+    font-size: $font-size;
+    max-height: 0;
     width: 100%;
     overflow: hidden;
-    transition: height 0.25s linear;
-    background-color: hsl(hue($light-blue),
-            saturation($light-blue),
-            90%);
+    transition: max-height 0.25s ease-out;
     position: absolute;
     bottom: 0;
     right: 0;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
-
-    .header {
-
-        height: 15vh;
-        overflow: hidden;
-        position: relative;
-        background-color: hsl(hue($light-blue),
-                saturation($light-blue),
-                30%);
-
-        .close {
-            position: absolute;
-            top: 1em;
-            left: 1em;
-            padding: auto;
-
-            mat-icon {
-                font-size: $font-size;
-            }
-
-            color: white;
-            z-index: 2;
-        }
-
-        img {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            filter: opacity(0.9) brightness(0.7);
-            mix-blend-mode: screen;
-
-        }
-
-        .title {
-            z-index: 2;
-            position: absolute;
-            bottom: 1em;
-            right: 1em;
-            color: white;
-            font-size: calc($font-size*3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+    background-color: $light-blue;
+    mat-card-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: fit-content;
+        mat-card-title {
+            text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            text-overflow: ellipsis;
-            max-width: 60%;
-            width: fit-content;
-            font-weight: 600;
-
+            max-width: 80vw;
+            font-size: calc($font-size*1.2);
+            font-weight: 500;
+            font-family: $raleway;
         }
     }
-}
-
-.content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    .text {
+    mat-card-content {
         display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow: scroll;
-        width: 80vw;
-        padding: 3%;
-
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1em;
         p {
-            font-size: calc($font-size*1.2);
+            flex-shrink: 1;
+            max-width: 80vw;
             overflow-wrap: break-word;
         }
-
+        
     }
-
-    .actions {
+    mat-card-actions {
         display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 20vw;
-        overflow: hidden;
-        align-items: center;
-        justify-content: center;
-
-
+        flex-direction: row;
+        justify-self: flex-end;
+        justify-content: right;
+        width: 100%;;
+        button, button > mat-icon {
+            font-size: $font-size;
+        }
+        button > mat-icon {
+            width: fit-content;
+            height: fit-content;
+        }
+        
     }
 }
+

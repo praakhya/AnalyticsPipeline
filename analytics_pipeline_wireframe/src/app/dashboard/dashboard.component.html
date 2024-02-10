@@ -18,7 +18,7 @@
     <hr class="divider"/>
     
     @if (createMode) {
-        <mat-card style="position: relative" class="create-card">
+        <mat-card class="create-card" #createCard [style.max-height]="this.maxHeightSignal()">
             <mat-card-header>
                 <mat-card-title>
                     <h3>Add a Workspace</h3>
@@ -32,7 +32,7 @@
             <mat-card-content>
                 <div class="owner-chip">
                     <mat-label>Owner Name</mat-label>
-                    <mat-chip>
+                    <mat-chip highlighted color="primary">
                         <img matChipAvatar src={{this.user.profilePictureURL}} alt="Photo of a Shiba Inu" />
                         {{this.user.username}}
                     </mat-chip>

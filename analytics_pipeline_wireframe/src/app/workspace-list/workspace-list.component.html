@@ -1,6 +1,6 @@
     
   
-<div class="items">
+<mat-list class="items">
 
     @for (ws of workspaceList; track ws) {
         <app-workspace-list-item [workspace]="ws"></app-workspace-list-item>
@@ -8,4 +8,4 @@
     }
     <app-sidenav></app-sidenav>
 
-</div>
+</mat-list>

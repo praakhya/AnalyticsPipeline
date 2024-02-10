@@ -37,5 +37,5 @@ $my-theme: mat.define-light-theme((
 @include mat.all-component-themes($my-theme);
 
 
-html, body { height: 100%; width: 100vw; overflow-x: hidden;}
+html, body {min-height: 100vh; width: 100vw; overflow-x: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; @include mat.elevation(2);}

@@ -1,25 +1,30 @@
-    <div class="sidenav" #sidenav [style.height]="this.styleSignal().height">
-        <div class="header">
+    <mat-card class="sidenav" #sidenav [style.max-height]="this.styleSignal().maxHeight" tabindex="-1">
+        <mat-card-header >
             <button mat-icon-button class="close" (click)="closeNav()">
                 <mat-icon>close</mat-icon>
             </button>
-            <div class="title">{{this.workspaceSignal()?.workspaceName}}</div>
-            <img src={{this.workspaceSignal()?.coverPictureURL}}/>
-        </div>
-        <div class="content">
-            <div class="text">
-                <p>
-                    {{this.workspaceSignal()?.description}}
-                </p>
-            </div>
-            <div class="actions">
-                <button mat-icon-button>
-                    <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon>delete</mat-icon>
-                </button>
+            <mat-card-title>{{this.workspaceSignal()?.workspaceName}}</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        
+        <mat-card-content>
+                    <p>
+                        {{this.workspaceSignal()?.description}}
+                    </p>
+                    @if (this.workspaceSignal()?.coverPictureURL) {
+                        <img matCardImage src={{this.workspaceSignal()?.coverPictureURL}} matCardImageMedium/>
 
-            </div>
-        </div>
-    </div>
+                    }
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>
+                Edit
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button>
+                Delete
+                <mat-icon>delete</mat-icon>
+            </button>
+
+        </mat-card-actions>
+    </mat-card>

@@ -3,39 +3,75 @@
 .items {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
     gap: 1em;
-    justify-content: flex-start;
-    align-content: center;
-    margin: 1em;
+    align-items: stretch;
+    padding: 1em;
+    height: 60vh;
+    
+    .item:last-child {
+        margin-right: 2em;
+    }
     .item {
-        display: flex;
-        overflow: hidden;
-        justify-content: space-between;
-        align-items: center;
-        width: 15em;
-        border-radius: $border-radius;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
         background-color: $amber;
+        
+        .imgContainer {
+            overflow: hidden;
+            border-radius: $border-radius;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        max-width: 70%;
+        mat-card-header {
+            display: flow-root;
+            margin-bottom: 1em;
+        }
+        mat-card-actions {
+            
+            button {
+                font-size: $font-size;
+            }
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
         .title {
-            width: fit-content;
-            font-family: $titillium;
-            font-weight: 400;
-            font-size: calc($font-size * 2);
-        }
-        .sub-title {
-            padding: 1em;
-        }
-        img {
-            width: 100%;
-            max-height: 10em;
+                font-size: calc($font-size*2);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                
         }
 
+        .subtitle {
+                font-size: calc($font-size);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                overflow-wrap: break-word;
+        }
+        mat-card-actions {
+            justify-self: bottom;
+        }
+    }
+    .item:hover {
+        background-color: $light-blue;
     }
 }
-.actions {
+.partners {
     display: flex;
-    flex-direction: row;
-    gap: 0.5em;
-    justify-content: flex-end;
-    width: 100%;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;
+    div {
+        font-family: $raleway;
+        font-weight: 600;
+    }
 }

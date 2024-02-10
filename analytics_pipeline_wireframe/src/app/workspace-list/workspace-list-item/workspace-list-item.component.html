@@ -1,6 +1,5 @@
-<div class="panel" (click)="openNav()">
-    <div class="panel-header">
-        <p class="title">{{workspace.workspaceName}}</p>
-        <p class="owner">{{workspace.ownerName}}</p>
-    </div>
-</div>
+<mat-list-item class="panel" (click)="openNav()">
+    <div matListItemTitle class="title">{{workspace.workspaceName}}</div>
+    <div matListItemMeta class="owner">{{workspace.ownerName}}</div>
+</mat-list-item >
+<mat-divider></mat-divider>

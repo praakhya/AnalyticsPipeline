@@ -1,26 +1,59 @@
-
 <div class="items">
-    @for (ws of workspaceList; track ws) {
-        <mat-card class="item">
-            <mat-card-header>
-              <mat-card-title class="title">{{ws.workspaceName}}</mat-card-title>
-              <mat-card-subtitle class="sub-title">
-                {{ws.description}}
-              </mat-card-subtitle>
-            </mat-card-header>
-            @if (ws.coverPictureURL) {
-                <img mat-card-image src={{ws.coverPictureURL}}/>
-            }
-            <mat-card-actions class="actions">
-              <button mat-button>
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-button>
-                <mat-icon>delete</mat-icon>
-              </button>
-          </mat-card-actions>
-        </mat-card>
-          
+  @for (ws of workspaceList; track ws) {
+  <mat-card class="item" fxFlex>
+    @if (ws.coverPictureURL) {
+    <div class="imgContainer">
+      <img mat-card-image src={{ws.coverPictureURL}} />
+    </div>
     }
-    
+    <mat-card-header>
+      <mat-card-title class="title">
+          <p>
+            {{ws.workspaceName}}
+          </p>
+      </mat-card-title>
+      <mat-card-subtitle class="subtitle">
+          <p>
+            {{ws.description}}
+          </p>
+      </mat-card-subtitle>
+      <mat-card-title>
+        Owner
+        <mat-chip highlighted color="primary">{{ws.ownerName}}</mat-chip>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <button mat-button>
+        Edit
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-button>
+        Delete
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+    <div class="partners">
+      <mat-card-title>Workspace Partners</mat-card-title>
+      <mat-chip-set aria-label="Dog selection">
+        @if (!ws.partnerNames) {
+          <mat-card-subtitle>No partners in workspace</mat-card-subtitle>
+        }
+        @else {
+          @for (partner of ws.partnerNames; track partner) {
+            <mat-chip highlighted color="accent">
+              {{partner}}
+            </mat-chip>
+            
+          
+          }
+        }
+      </mat-chip-set>
+        
+    </div>
+  </mat-card>
+
+  }
+
 </div>

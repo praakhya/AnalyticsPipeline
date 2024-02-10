@@ -4,13 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ElementRef, ViewChild } from '@angular/core';
 import { SidenavService } from '../../services/sidenav.service';
-
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 @Component({
   selector: 'app-workspace-list-item',
   standalone: true,
   imports: [
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatDividerModule
   ],
   animations:[],
   templateUrl: './workspace-list-item.component.html',

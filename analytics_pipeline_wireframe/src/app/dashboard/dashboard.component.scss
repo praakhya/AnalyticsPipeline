@@ -2,16 +2,23 @@
 .background {
 }
 .divider {
-    border: 0.025px solid $light-blue;
+    border: 1px solid $light-blue;
     width: 100%;
 }
 .create-card {
+    max-height: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: $light-blue;
+    transition: max-height 0.25s linear;
+    z-index: 3;
 
 }
 .dashboard-page {
     min-height: 80vh;
     display: flex;
-    padding: 5%;
     flex-direction: column;
     .operation-tab {
         display: flex;
@@ -30,6 +37,7 @@
         align-items: center;
         flex-wrap: wrap;
         align-content: center;
+        padding: 5%;
         h1 {
             width: fit-content;
             font-family: $raleway;
