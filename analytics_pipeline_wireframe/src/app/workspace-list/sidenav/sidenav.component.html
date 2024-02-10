@@ -1,0 +1,25 @@
+    <div class="sidenav" #sidenav [style.height]="this.styleSignal().height">
+        <div class="header">
+            <button mat-icon-button class="close" (click)="closeNav()">
+                <mat-icon>close</mat-icon>
+            </button>
+            <div class="title">{{this.workspaceSignal()?.workspaceName}}</div>
+            <img src={{this.workspaceSignal()?.coverPictureURL}}/>
+        </div>
+        <div class="content">
+            <div class="text">
+                <p>
+                    {{this.workspaceSignal()?.description}}
+                </p>
+            </div>
+            <div class="actions">
+                <button mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+            </div>
+        </div>
+    </div>

@@ -2,14 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Workspace } from '../../model/workspace';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { ElementRef, ViewChild } from '@angular/core';
+import { SidenavService } from '../../services/sidenav.service';
+
 @Component({
   selector: 'app-workspace-list-item',
   standalone: true,
@@ -23,45 +18,12 @@ import {
 })
 export class WorkspaceListItemComponent {
   panelOpenState = false;
-  
   @Input() workspace!:Workspace;
-  
-  panelContentClasses:string[] = [
-    "panel-content"
-  ];
-  togglePanelContent(visibility:boolean) {
-    this.panelOpenState = visibility
-    
-    var showIndex = this.panelContentClasses.indexOf("showing");
-    if (showIndex!=-1) {
-      this.panelContentClasses.splice(showIndex, 1);
-    }
-    else {
-      this.panelContentClasses.push("showing")
-    }
-    console.log("After toggling: ",this.panelOpenState, this.panelContentClasses)
-  }
-  classListGetter() {
-    return this.panelContentClasses.join(' ');
-  }
-  getStyle() {
-    if (this.panelOpenState && this.workspace.coverPictureURL) {
-        return  {
-          "background-image": `url(${this.workspace.coverPictureURL})`,
-          "background-size": "cover",
-        }
-      }
-    else return ""
-  }
-  getClass() {
-    if (this.panelOpenState && this.workspace.coverPictureURL) {
-        this.panelContentClasses.push("with-image")
-      }
-    else {
-      this.panelContentClasses = this.panelContentClasses.filter(u=>{u=="with-image"});
-      
-    }
-    return this.classListGetter()
+  constructor(private navService:SidenavService) {}
+  openNav() {
+    console.log("In open nav for ", this.workspace.workspaceName)
+    this.navService.setWorkspace(this.workspace)
+
   }
 
 }

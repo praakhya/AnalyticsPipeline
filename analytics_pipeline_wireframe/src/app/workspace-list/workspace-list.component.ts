@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { WorkspaceListItemComponent } from './workspace-list-item/workspace-list-item.component';
-
+import { SidenavComponent } from './sidenav/sidenav.component';
 @Component({
   selector: 'app-workspace-list',
   standalone: true,
@@ -15,7 +15,8 @@ import { WorkspaceListItemComponent } from './workspace-list-item/workspace-list
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    WorkspaceListItemComponent
+    WorkspaceListItemComponent,
+    SidenavComponent
   ],
   animations:[],
   templateUrl: './workspace-list.component.html',

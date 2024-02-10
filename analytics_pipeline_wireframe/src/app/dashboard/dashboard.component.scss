@@ -1,13 +1,8 @@
 @import "../../vars.scss";
 .background {
-    background-color: hsl(
-                hue($light-blue),
-                100%,
-                49%
-            );
 }
 .divider {
-    border: 0.025px solid $amber;
+    border: 0.025px solid $light-blue;
     width: 100%;
 }
 .create-card {
@@ -39,7 +34,7 @@
             width: fit-content;
             font-family: $raleway;
             font-weight: 500;
-            color: $light-blue;
+            color: hsl(hue($light-blue), saturation($light-blue), 50);
         }
     }
     .btn-grp {
