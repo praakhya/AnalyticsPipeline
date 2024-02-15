@@ -16,6 +16,10 @@ public class Paths {
 
       public static final String GetOne = "{" + GetOnePathVariable + "}";
     }
+    public class Files {
+      public static final String Base = "/files";
+      public static final String fullPath = Paths.V1.fullPath + Base;
+    }
     public class Workspaces {
       public static final String Base = "/workspaces";
       public static final String fullPath = Paths.V1.fullPath + Base;
