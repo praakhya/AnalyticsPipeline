@@ -53,7 +53,7 @@ public class FileService {
     return Optional.of(fileRepository.save(fileEntity));
   }
 
-  public Optional<FileEntity> save(MultipartFile file) {
+  public Optional<FileEntity> save(MultipartFile file, String username) {
     String uploadedFilename = file.getOriginalFilename();
     String mimeType = file.getContentType();
     long size = file.getSize();
@@ -73,6 +73,7 @@ public class FileService {
         .originalFilename(uploadedFilename)
         .size(size)
         .storagePathname(destinationFile.toString())
+        .ownerName(username)
         .build();
       content.setUrl(String.format("%s/%s/%s",
         servletRequest.getRequestURI(),

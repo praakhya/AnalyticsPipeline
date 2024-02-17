@@ -19,6 +19,7 @@ public class FileEntity {
   private UUID id;
   private String name;
   private String url;
+  private String ownerName;
   public void setUrl(String u) {
     this.url = u;
   }

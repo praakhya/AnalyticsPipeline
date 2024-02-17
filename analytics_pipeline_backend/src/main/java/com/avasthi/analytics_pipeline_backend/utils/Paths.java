@@ -19,6 +19,9 @@ public class Paths {
     public class Files {
       public static final String Base = "/files";
       public static final String fullPath = Paths.V1.fullPath + Base;
+      public static final String GetOneFilePathVariable = "fileId";
+      public static final String GetOne = "{" + GetOneFilePathVariable + "}";
+
     }
     public class Workspaces {
       public static final String Base = "/workspaces";
